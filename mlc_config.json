@@ -11,7 +11,7 @@
       }
       ,
       {
-        "pattern": "^http://*.platformdxc-mg-d0.com"
+        "pattern": "^http://confluence-demo.platformdxc-mg-d0.com"
       }
     ]
   }
