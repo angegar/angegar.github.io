@@ -6,9 +6,9 @@
 
 ## Install kubernetes
 
-As per the [kubernetes web site](https://kubernetes.io/docs/setup/pick-right-solution/) there are plenty of ways to install a kubernetes cluster. However the one I choose is not listed in this website but was produced by kubernetes.
+Per the Kubernetes documentation, there are plenty of ways to install a kubernetes cluster. However, the one I used is not listed in this website but was produced by kubernetes.
 
-### Install with [KOPS (Kubernete OperationS)](https://kubernetes.io/docs/setup/custom-cloud/kops/)
+### Install with [KOPS (Kubernetes OperationS)](https://kubernetes.io/docs/setup/custom-cloud/kops/)
 ```Shell
 # Configure AWS Region to use, the aws key and secret are in your ~/.kube folder
 REGION=us-west-1

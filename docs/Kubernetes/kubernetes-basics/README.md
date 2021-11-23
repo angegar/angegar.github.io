@@ -126,11 +126,11 @@ Delete the first replicaset created
 
 `kubectl delete replicaset confluence-replicaset -n demo`
 
-## Create a statefulset
+## Create a StatefulSet
 
-*A statefulset is a Kubernetes object used to manage pods. It has its own control plain to manage the number of replica. It is mainly used to manage stateful applications.*
+*A StatefulSet is a Kubernetes object used to manage pods. It has its own control plain to manage the number of replica. It is mainly used to manage stateful applications.*
 
-Deploy your application with a statefulset
+Deploy your application with a StatefulSet
 
 `kubectl apply -f manifests/statefulset.yaml --namespace demo`
 
@@ -142,7 +142,7 @@ Check the pods
 
 `kubectl get pods --namespace demo`
 
-**Note: It is interesting to see that the statefulset counts only the pods it creates. This is because it has its own control plain.**
+**Note: It is interesting to see that the StatefulSet counts only the pods it creates. This is because it has its own control plain.**
 
 During the deployment we requested for persistent storage.
 
@@ -154,7 +154,7 @@ Look for the storage in AWS
 
 `aws ec2 describe-volumes --filter Name=tag:kubernetes.io/created-for/pvc/namespace,Values=demo --query "Volumes[*].{ID:VolumeId}`
 
-Delete the statefulset
+Delete the StatefulSet
 
 `kubectl delete statefulset confluence --namespace demo`
 
@@ -164,7 +164,7 @@ The disk are still there.
 
 **Note: PersistentVolume Claims are not deleted when the Pods, or StatefulSet are deleted. This must be done manually.**
 
-Deploy again the statefulset
+Deploy again the StatefulSet
 
 `kubectl apply -f manifests/statefulset.yaml --namespace demo`
 
@@ -180,7 +180,7 @@ Try to access http://confluence-demo.platformdxc-mg-d0.com
 
 ## Persistent volume claim
 
-As the default pod storage type (emptyDir) is epheral we may need to create permanent disk with the persistent volume claim;
+As the default pod storage type (emptyDir) is ephemeral we may need to create permanent disk with the persistent volume claim;
 
 # References
 
