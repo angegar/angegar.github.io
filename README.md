@@ -20,11 +20,11 @@ Welcome to my github page, you will find here documentations and tutorials on se
   
 ## Kubernetes
 
-- [kubernetes overview](kubernetes-overview/README.md)
-- [kubernetes ecosystem](kubernetes/k8s_ecosystem.md)
-- [kubernetes the hard way](kubernetes-basics/README.md)
-- [Deploy WordPress - part 1](kubernetes-wordpress/README.md) [**[video]**](https://dxc.workplace.com/100022623742139/videos/666197697477682)
-- [Manage your applications with Helm](kubernetes-helm/README.md) [**[video]**](https://dxc.workplace.com/100022623742139/videos/724290418335076/)
+- [kubernetes overview](https://angegar.github.io/Kubernetes/kubernetes-overview/README.html)
+- [kubernetes ecosystem](docs/Kubernetes/kubernetes/k8s_ecosystem.md)
+- [kubernetes the hard way](docs/Kubernetes/kubernetes-basics/README.md)
+- [Deploy WordPress - part 1](docs/Kubernetes/kubernetes-wordpress/README.md) [**[video]**](https://dxc.workplace.com/100022623742139/videos/666197697477682)
+- [Manage your applications with Helm](docs/Kubernetes/kubernetes-helm/README.md) [**[video]**](https://dxc.workplace.com/100022623742139/videos/724290418335076/)
 
 ## Jenkins
 
