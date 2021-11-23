@@ -1,33 +1,12 @@
-# Kubernetes and its friends <!-- omit in toc --> 
-
-## Table of contents <!-- omit in toc --> 
-- [Pre-requisite](#pre-requisite)
-- [Install kubernetes](#install-kubernetes)
-  - [Install with KOPS (Kubernete OperationS)](#install-with-kops-kubernete-operations)
-- [Resize your cluster nodes](#resize-your-cluster-nodes)
-- [Deploy a container with kubernetes](#deploy-a-container-with-kubernetes)
-  - [Create a manifest file](#create-a-manifest-file)
-  - [Deploy the manifest](#deploy-the-manifest)
-- [Deploy a container with Helm](#deploy-a-container-with-helm)
-  - [Helm lint](#helm-lint)
-  - [Deploy your chart](#deploy-your-chart)
-- [Deploy a container with Spinnaker](#deploy-a-container-with-spinnaker)
-  - [Install Spinnaker](#install-spinnaker)
-  - [Create a Spinnaker pipeline template](#create-a-spinnaker-pipeline-template)
-    - [Template sample](#template-sample)
-    - [Template configuration](#template-configuration)
-    - [Deploy your pipeline to Spinnaker](#deploy-your-pipeline-to-spinnaker)
-- [Deploy a container with Jenkins-X](#deploy-a-container-with-jenkins-x)
-- [References](#references)
+# Kubernetes and its friends
 
 ## Pre-requisite
 
- - To manage the kubernetes stack you will need to install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) CLI.
-
+- To manage the kubernetes stack you will need to install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) CLI.
 
 ## Install kubernetes
 
-As per the [kubernetes web site](https://kubernetes.io/docs/setup/pick-right-solution/) there are plenty of ways to install a kubernetes cluster. However the one i choosen is not listed in this website but was produced by kubernetes.
+As per the [kubernetes web site](https://kubernetes.io/docs/setup/pick-right-solution/) there are plenty of ways to install a kubernetes cluster. However the one I choose is not listed in this website but was produced by kubernetes.
 
 ### Install with [KOPS (Kubernete OperationS)](https://kubernetes.io/docs/setup/custom-cloud/kops/)
 ```Shell
@@ -60,9 +39,9 @@ kops create cluster $CLUSTER_NAME \
     --master-zones $AVAILABILITY_ZONES \
     --alsologtostderr \
     --yes
- ```
- 
-**Congratulation you just deploy you first kubernetes cluster !!!!**
+```
+
+**Congratulation you have just deployed your first kubernetes cluster !!!!**
 
 <img src="https://render.bitstrips.com/v2/cpanel/b8b01acf-113e-4801-b09f-6403c66e3c4a-bc9fa5d8-e141-4ea4-879d-bc3d4b22abbc-v1.png?transparent=1&palette=1" width="200" align="middle" />
  
@@ -80,15 +59,15 @@ master-us-west-1a-1     Master  t2.large        1       1       us-west-1a
 master-us-west-1a-2     Master  t2.large        1       1       us-west-1a
 master-us-west-1c-1     Master  t2.large        1       1       us-west-1c
 nodes                   Node    t2.2xlarge      3       9       us-west-1a,us-west-1c
- ```
+```
  
 Then you can edit your instance groups in using
 
     kops edit ig <ig name> --state s3://lgil3-kubernetes
    
- For the instance group nodes, the file content is
+For the instance group nodes, the file content is
  
- ```yaml
+```yaml
     apiVersion: kops/v1alpha2
     kind: InstanceGroup
     metadata:
@@ -111,11 +90,12 @@ Then you can edit your instance groups in using
 
 change the minSize to 4 and apply the change :
 
+```bash
     kops update cluster kube.platformdxc-test.com --yes --state s3://lgil3-kubernetes
     kops rolling-update cluster  kube.platformdxc-test.com --state=s3://lgil3-kubernetes --yes
+```
 
-
-**Amazing you just scale your cluster**
+**Amazing you have just scaled your cluster**
 
 <img src="https://render.bitstrips.com/v2/cpanel/e068dd5c-9de0-4feb-9f57-f7289961c386-bc9fa5d8-e141-4ea4-879d-bc3d4b22abbc-v1.png?transparent=1&palette=1" width="200" align="middle"/>
 
@@ -123,7 +103,8 @@ change the minSize to 4 and apply the change :
 
 ### Create a manifest file
 
-Create a manifest file with the following content :
+Create a manifest file with the following content:
+
 ```yaml
 kind: Namespace
 apiVersion: v1
@@ -166,12 +147,11 @@ spec:
       volumes:
       - name: jenkins-home
         emptyDir: {}
-  ```
+```
 
 ### Deploy the manifest
 
 Download the *[manifest](manifest.yaml)* file  and execute the following command. The manifest will create the `jenkins-test` namespace and will deploy a jenkins pod.
-
 
     kubectl create -f manifest.yaml
 
@@ -363,13 +343,11 @@ roer --as $(token) app create elasticsearch createApp.yml
   roer --as $(token)	pipeline save elk-config.yaml
   ```
 
-
-## Deploy a container with Jenkins-X
-
+<!-- ## Deploy a container with Jenkins-X
+-->
 
 ## References
 - [https://kubernetes.io/docs/reference/kubectl/cheatsheet/](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 - [https://github.com/spinnaker/dcd-spec/blob/master/PIPELINE_TEMPLATES.md](https://github.com/spinnaker/dcd-spec/blob/master/PIPELINE_TEMPLATES.md)
 - [https://github.com/spinnaker/roer](https://github.com/spinnaker/roer)
-
     
