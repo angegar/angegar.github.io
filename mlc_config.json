@@ -1,0 +1,18 @@
+{
+    "ignorePatterns": [
+      {
+        "pattern": "^https://www.ibm.com/cloud/architecture/images/courses/helm-fundamentals/helm-1-small.jpg#helm"
+      },
+      {
+        "pattern": "^http://localhost"
+      },
+      {
+        "pattern": "^http://127.0.0.1"
+      }
+      ,
+      {
+        "pattern": "^http://*.platformdxc-mg-d0.com"
+      }
+    ]
+  }
+  

@@ -96,9 +96,9 @@ A blue green implementation at the Kubernetes service level will work, indeed a 
 
 2. From the folder, execute the commands
 
-```shell
+  ```shell
   kubectl apply -f ./
-```
+  ```
 3. Open a proxy to the website
 
 ```shell
@@ -122,7 +122,7 @@ Now the service is redirecting the traffic to the green website
 
 ### Ingress level
 
-![](./bluegreen2.drawio.png)
+![bluegreen2](./bluegreen2.drawio.png)
 
 In this schema, we see the current stable application inside the blue circle, those pods are exposed through a Kubernetes service with the label selector V1. The green pods are the new ones exposed with label selector V2, to perform a blue green deployment the ingress controller will be updated to direct the traffic to the V2 service.
 
@@ -131,11 +131,11 @@ In this schema, we see the current stable application inside the blue circle, th
 1. Copy the files below in folder
 2. From the folder, execute the commands
 
-    kubectl apply -f ./
+        kubectl apply -f ./
 
-3. Navigate to [http://website.1ffa2ce62a1a4c608aea.francecentral.aksapp.io/](http://website.1ffa2ce62a1a4c608aea.francecentral.aksapp.io/)
+3. Navigate to `http://website.<your ingress wildcard>` (ex: `website.1ffa2ce62a1a4c608aea.francecentral.aksapp.io`)
 4. Update the ingress controller backend service to blue-svc
-5. Navigate to [http://website.1ffa2ce62a1a4c608aea.francecentral.aksapp.io/](http://website.1ffa2ce62a1a4c608aea.francecentral.aksapp.io/)
+5. Navigate to `http://website.<your ingress wildcard>` (ex: `website.1ffa2ce62a1a4c608aea.francecentral.aksapp.io`)
 
 === "blue.yml"
 
@@ -287,7 +287,7 @@ Helm is a Kubernetes package manager allowing to package deployment playbooks an
 
 The propose solution will use multiple namespaces, one for each version of the application using the same Helm chart, and another to host the ingress which will do the switch been blue and green.
 
-![](./bluegreen3.drawio.png)
+![bluegreen3](./bluegreen3.drawio.png)
 
 **Hands-on**
 

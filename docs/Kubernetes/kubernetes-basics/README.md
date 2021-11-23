@@ -186,8 +186,6 @@ As the default pod storage type (emptyDir) is epheral we may need to create perm
 
 https://kubernetes.io/fr/docs/reference/kubectl/
 
-https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.15
-
 https://confluence.atlassian.com/confkb/how-to-generate-a-new-confluence-cfg-xml-425461512.html?_ga=2.16139198.924632318.1562615698-1640495167.1558622810
 
 https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/

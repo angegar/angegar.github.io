@@ -335,7 +335,7 @@ helm list -n helm-demo2
 
 #### Navigate
 
-Open the [http://localhost](http://localhost) url to read the devcloud web site.
+Open the `http://localhost` url to read the DevCloud web site.
 
 > ***Learnings***
 >
