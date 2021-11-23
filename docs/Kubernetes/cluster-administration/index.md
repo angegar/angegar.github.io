@@ -101,9 +101,6 @@ They are a lot of ways to deploy and maintain a Kubernetes cluster. I will just 
 - OpenShift Container Platform
 - Kubespray
 
-!!! info "References"
-    You will find a huge list of ways to spin up a Kubernetes stack [here](https://kubernetes.io/fr/docs/setup/pick-right-solution/){target=_blank}
-
 ## Management / deployment tools
 
 - [kubectl](https://github.com/kubernetes/kubectl){target=_blank}: command line tool lets you control Kubernetes clusters

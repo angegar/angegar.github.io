@@ -48,7 +48,7 @@ Then describe your pipelines :
         }
     }
 
-You will find the complete Jenkinsfile documentation [here](https://jenkins.io/doc/book/pipeline/syntax/)
+You will find the complete Jenkinsfile documentation [here](https://jenkins.io/doc/book/pipeline/syntax)
 
 Jenkins embed a help to create the jenkinsfile a the following url `http://18.220.205.59:8080/job/<org_name>/pipeline-syntax/`
 

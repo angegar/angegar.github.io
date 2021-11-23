@@ -4,7 +4,7 @@ Blue-Green is a well known deployment pattern which I will not cover here. The p
 
 ## From Manifests files
 
-The simpliest way to perform a blue-green deployment is to implement it from manifests files.
+The simplest way to perform a blue-green deployment is to implement it from manifests files.
 
 ### Service level
 
@@ -97,22 +97,23 @@ A blue green implementation at the Kubernetes service level will work, indeed a 
 2. From the folder, execute the commands
 
 ```shell
-kubectl apply -f ./
+  kubectl apply -f ./
 ```
 3. Open a proxy to the website
 
 ```shell
-kubectl  port-forward svc/bluegreen 8080:80
+  kubectl  port-forward svc/bluegreen 8080:80
 ```
 
-4. Nagivate to http://localhost:8080
+4. Navigate to `http://localhost:8080`
 5. Update the service selector section to use green instead of blue
 6. Execute
+
 ```shell
-kubectl apply -f ./
+  kubectl apply -f ./
 ```
-7. Nagivate to http://localhost:8080
-   
+1. Navigate to `http://localhost:8080`
+
 Now the service is redirecting the traffic to the green website
 
 !!! info "Conclusion"
@@ -135,7 +136,7 @@ In this schema, we see the current stable application inside the blue circle, th
 3. Navigate to [http://website.1ffa2ce62a1a4c608aea.francecentral.aksapp.io/](http://website.1ffa2ce62a1a4c608aea.francecentral.aksapp.io/)
 4. Update the ingress controller backend service to blue-svc
 5. Navigate to [http://website.1ffa2ce62a1a4c608aea.francecentral.aksapp.io/](http://website.1ffa2ce62a1a4c608aea.francecentral.aksapp.io/)
-   
+
 === "blue.yml"
 
     ``` yaml

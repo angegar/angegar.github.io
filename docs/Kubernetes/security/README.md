@@ -54,7 +54,7 @@ kubectl apply -f namespaces.yaml
        kubectl port-forward -n app svc/phpmyadmin 8080:80
     ```
 
-- Connect the [phpMyAdmin UI](http://localhost:8080)
+- Connect the `phpMyAdmin UI` on `http://localhost:8080`
 - The phpMyAdmin web site should be accessible
 
 ### Apply default network policies
