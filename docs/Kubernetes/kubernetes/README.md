@@ -44,29 +44,33 @@ kops create cluster $CLUSTER_NAME \
 **Congratulation you have just deployed your first kubernetes cluster !!!!**
 
 <img src="https://render.bitstrips.com/v2/cpanel/b8b01acf-113e-4801-b09f-6403c66e3c4a-bc9fa5d8-e141-4ea4-879d-bc3d4b22abbc-v1.png?transparent=1&palette=1" width="200" align="middle" />
- 
+
 ## Resize your cluster nodes
- 
- You can list your [instance group](https://github.com/kubernetes/kops/blob/master/docs/instance_groups.md) in using:
- 
-    kops get ig
-   
- The command output will be
- 
+
+You can list your [instance group](https://github.com/kubernetes/kops/blob/master/docs/instance_groups.md) in using:
+
 ```shell
+kops get ig
+```
+The command output will be
+
+```shell
+
+// cspell:disable-next-line -- disables checking till the end of the next line.
   NAME                    ROLE    MACHINETYPE     MIN     MAX     ZONES
 master-us-west-1a-1     Master  t2.large        1       1       us-west-1a
 master-us-west-1a-2     Master  t2.large        1       1       us-west-1a
 master-us-west-1c-1     Master  t2.large        1       1       us-west-1c
 nodes                   Node    t2.2xlarge      3       9       us-west-1a,us-west-1c
 ```
- 
-Then you can edit your instance groups in using
 
-    kops edit ig <ig name> --state s3://lgil3-kubernetes
-   
+Then you can edit your instance groups in using :
+
+```shell
+kops edit ig <ig name> --state s3://lgil3-kubernetes
+```  
 For the instance group nodes, the file content is
- 
+
 ```yaml
     apiVersion: kops/v1alpha2
     kind: InstanceGroup
@@ -153,30 +157,37 @@ spec:
 
 Download the *[manifest](manifest.yaml)* file  and execute the following command. The manifest will create the `jenkins-test` namespace and will deploy a jenkins pod.
 
-    kubectl create -f manifest.yaml
+```shell
+kubectl create -f manifest.yaml
+```
 
 You can check that your jenkins pod was created in  using :
 
+```shell
     kubectl get pods -n jenkins-test
+```
 
 if you need more details about your pod you can execute :
 
+```shell
     kubectl describe pods <pod name>-n jenkins-test
-
+```
 ## Deploy a container with Helm
 
 You can create a jenkins helm chart with :
 
+```shell
     helm create jenkins
+```
 
 The comment will create a new repository with the following structure :
 
 ![helm_dir_struct.PNG](helm_dir_struct.PNG)
 
-- The template folder contains a basic chart definition. 
+- The template folder contains a basic chart definition.
 - The values file will contain the chart parameters
 
-Edit the `values.yaml` file : 
+Edit the `values.yaml` file :
 
 - change the parameter `repository` to *jenkins/jenkins*
 - change the parameter `tag` to *2.130*
@@ -202,20 +213,24 @@ We need to do it as the default container is nginx and we are trying to deploy j
 
 Helm comes with a linter to check your chart syntax, go into the jenkins helm folder and execute :
 
+```shell
     helm lint .
+```
 
 ### Deploy your chart
 From your chart folder
-
+```shell
     helm install --name jenkins --namespace jenkins-test --values values.yaml . 
+```
 
 Access your jenkins server in using the following commands :
 
+```shell
     export POD_NAME=$(kubectl get pods --namespace jenkins-test -l "app=jenkins,release=jenkins" -o jsonpath="{.items[0].metadata.name}")
     kubectl port-forward $POD_NAME 8080:8080 -n jenkins-test
+```
 
-Navigate to http://127.0.0.1:8080
-
+Navigate to [http://127.0.0.1:8080](http://127.0.0.1:8080)
 
 <img src="https://render.bitstrips.com/v2/cpanel/08e72ba2-d244-4ff6-afe1-c1506b9e2f02-bc9fa5d8-e141-4ea4-879d-bc3d4b22abbc-v1.png?transparent=1&palette=1" width="200" align="middle"/>
 
@@ -227,13 +242,13 @@ You can deploy Spinnaker in using [Halyard](https://www.spinnaker.io/setup/insta
 
 ### Create a Spinnaker pipeline template
 
-> You can configure Spinnaker from the UI or from code. 
+> You can configure Spinnaker from the UI or from code.
 
-A Spinnaker pipeline is composed of a template and a configuration which is very powerfull as you can reuse a template pipeline over different project.
+A Spinnaker pipeline is composed of a template and a configuration which is very powerful as you can reuse a template pipeline over different project.
 
 ![spinnaker template](https://github.com/spinnaker/dcd-spec/blob/master/MPTGraphic.png)
 
-As the template pipeline is shared accross several projects if you modify it once it will update all the associated pipelines.
+As the template pipeline is shared across several projects if you modify it once it will update all the associated pipelines.
 
 #### Template sample
 elk-template.yml
@@ -334,14 +349,14 @@ This pipeline is configure to follow the master branch of the repository chart-e
 You can now push your pipeline to Spinnaker in using the [roer](https://github.com/spinnaker/roer) cli.
 
 1. Create the spinnaker application
-```bash
-roer --as $(token) app create elasticsearch createApp.yml
-```
+    ```bash
+    roer --as $(token) app create elasticsearch createApp.yml
+    ```
 
 2. Create your deployment pipeline
-  ```bash
-  roer --as $(token)	pipeline save elk-config.yaml
-  ```
+    ```bash
+    roer --as $(token) pipeline save elk-config.yaml
+    ```
 
 <!-- ## Deploy a container with Jenkins-X
 -->
@@ -350,4 +365,4 @@ roer --as $(token) app create elasticsearch createApp.yml
 - [https://kubernetes.io/docs/reference/kubectl/cheatsheet/](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 - [https://github.com/spinnaker/dcd-spec/blob/master/PIPELINE_TEMPLATES.md](https://github.com/spinnaker/dcd-spec/blob/master/PIPELINE_TEMPLATES.md)
 - [https://github.com/spinnaker/roer](https://github.com/spinnaker/roer)
-    
+  

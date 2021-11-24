@@ -42,7 +42,7 @@ The following question will help you to design your Kubernetes environment
 - Standardized application delivery
 - Decoupled from the underlying cloud
 - Kubernetes API is a solid foundation for multi-cloud and hybrid cloud
-- Exemple [KubeCDN](https://blog.insightdatascience.com/how-to-build-your-own-cdn-with-kubernetes-5cab00d5c258)
+- Example [KubeCDN](https://blog.insightdatascience.com/how-to-build-your-own-cdn-with-kubernetes-5cab00d5c258)
 
 !!! info "Resources"
     - [A Multi-Cloud and Multi-Cluster Architecture with Kubernetes](https://medium.com/datadriveninvestor/a-multi-cloud-and-multi-cluster-architecture-with-kubernetes-cb3abe554948){target=_blank}
@@ -59,7 +59,7 @@ The following question will help you to design your Kubernetes environment
 !!! warning "Drawback"
     - Loosing one control plane host implies to also loose a etcd member thus the cluster data storage (cluster memory) is impacted
 
-![](https://d33wubrfki0l68.cloudfront.net/d1411cded83856552f37911eb4522d9887ca4e83/b94b2/images/kubeadm/kubeadm-ha-topology-stacked-etcd.svg)
+![kubeadm-ha-topology-stacked-etcd](https://d33wubrfki0l68.cloudfront.net/d1411cded83856552f37911eb4522d9887ca4e83/b94b2/images/kubeadm/kubeadm-ha-topology-stacked-etcd.svg)
 
 ### External etcd
 
@@ -70,7 +70,7 @@ The following question will help you to design your Kubernetes environment
 !!! warning "Drawback"
     - It is more expensive as you need at least 3 more hosts for the etcd cluster
 
-![](https://d33wubrfki0l68.cloudfront.net/ad49fffce42d5a35ae0d0cc1186b97209d86b99c/5a6ae/images/kubeadm/kubeadm-ha-topology-external-etcd.svg)
+![kubeadm-ha-topology-external-etcd](https://d33wubrfki0l68.cloudfront.net/ad49fffce42d5a35ae0d0cc1186b97209d86b99c/5a6ae/images/kubeadm/kubeadm-ha-topology-external-etcd.svg)
 
 !!! info "references"
     - [ha-topology](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/)
@@ -155,5 +155,4 @@ The cluster upgrade is composed of the following steps :
 
 - Uncordon node: If you leave the node in the cluster during the maintenance operation, you need to run the uncordon command to tell Kubernetes that it can resume scheduling new pods onto the node.
 
-
-https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/
+[kubeadm](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/){target=_blank}

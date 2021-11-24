@@ -8,7 +8,7 @@ We recommend to use the mesophere one (**mesosphere/aws-cli**) as it is based on
 ## Problem statement
 How to pass the AWS credentials to our aws cli container in a secure way.
 
-1. In Jenkins, navigate to your organization 
+1. In Jenkins, navigate to your organization
 2. Click on the button create credentials (bottom of the left menu)
 3. Click on Folder > Global credentials
 4. Click on **Add credentials** on the left menu

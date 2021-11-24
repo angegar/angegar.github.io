@@ -17,13 +17,11 @@ The demo code will be hosted on [github](https://github.com/angegar/k8s-security
 
 ### Pre-requisite
 
-Network policies are implemented by a [network plugin](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/){target=_blank}. To use network policies, you must be using a networking solution which supports NetworkPolicy. Creating a NetworkPolicy resource without a controller that implements it will have no effect. 
+Network policies are implemented by a [network plugin](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/){target=_blank}. To use network policies, you must be using a networking solution which supports NetworkPolicy. Creating a NetworkPolicy resource without a controller that implements it will have no effect.
 
 *([extract from the kubernetes doc](https://kubernetes.io/docs/concepts/services-networking/network-policies/#prerequisites){target=_blank})*
 
-
-As the demo runs on an AKS clusters, the choosen network policy is [calico](https://docs.projectcalico.org/about/about-calico){target=_blank}.
-
+As the demo runs on an AKS clusters, the chosen network policy is [calico](https://docs.projectcalico.org/about/about-calico){target=_blank}.
 
 ### Container Network Interface
 
@@ -59,8 +57,8 @@ kubectl apply -f namespaces.yaml
 
 ### Apply default network policies
 
-The purpose of this policy is to block any ingress or egress trafic using the data namespace.
-It is wise to apply a such rule to all the namespaces and explicity allows only the minium required connections.
+The purpose of this policy is to block any ingress or egress traffic using the data namespace.
+It is wise to apply a such rule to all the namespaces and explicitly allows only the minium required connections.
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -77,9 +75,9 @@ spec:
 
 Apply this NetworkPolicy will break the connection between phpMyAdmin and the backend MySQL datatabase.
 
-### Authorize trafic
+### Authorize traffic
 
-The NetworkPolicy below will enable the trafic on port 3306 from pods, in namespaces configured with the label `tier=app`, which have the label app=phpmyadmin.
+The NetworkPolicy below will enable the traffic on port 3306 from pods, in namespaces configured with the label `tier=app`, which have the label app=phpmyadmin.
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -121,15 +119,13 @@ Admission webhooks are HTTP callbacks that receive admission requests and do som
 
 *([source](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#what-are-admission-webhooks))*
 
-
 ### Open Policy Agent (OPA) Gatekeeper
 
-It is an [open source project](https://github.com/open-policy-agent/gatekeeper){target=_blank} used to enforece a set of compliance rules. As example, it may enforce the usage of a company docker registry and reject any other registries. It can also help to analyze the incoming request content and ensure that the container does not run as root.
+It is an [open source project](https://github.com/open-policy-agent/gatekeeper){target=_blank} used to enforce a set of compliance rules. As example, it may enforce the usage of a company docker registry and reject any other registries. It can also help to analyze the incoming request content and ensure that the container does not run as root.
 
 OPA Gatekeeper comes with a [public library](https://github.com/open-policy-agent/gatekeeper-library){target=_blank} provided users with a pre-defined set of bets practices.
 
-
-### Pre-requisite
+### Hands-on pre-requisite
 
 OPA GateKeeper must be deployed on the demo cluster.
 
@@ -139,9 +135,9 @@ In this example, we will only allow phpMyAdmin and mysql to be deployed in the c
 
 #### Deploy the rule template
 
-The rule template will a create a Custom Ressource Definition (CRD) which will be usable to enforce some practices.
+The rule template will a create a Custom Resource Definition (CRD) which will be usable to enforce some practices.
 
-The **ConstraintTemplate** below is a standard one used to enforce container  iamge source repository. The **Rego** language is used to speficy the template behaviour, this abstraction prevent the hardship of custom admission webhook creation and make simplier the creation of constraints policies.
+The **ConstraintTemplate** below is a standard one used to enforce container  image source repository. The **Rego** language is used to specify the template behaviour, this abstraction prevent the hardship of custom admission webhook creation and make simpler the creation of constraints policies.
 
 ```yaml
 apiVersion: templates.gatekeeper.sh/v1beta1
@@ -206,7 +202,7 @@ spec:
       - "phpmyadmin"
 ```
 
-This constraint will forbid the deployment of containers other than the `phpmyadmin` one. Because OPA Gatekeeper templates are used to create new Custom Resource Definision, it becomes easy to add constraints.
+This constraint will forbid the deployment of containers other than the `phpmyadmin` one. Because OPA Gatekeeper templates are used to create new Custom Resource Definition, it becomes easy to add constraints.
 
 #### Execute a deployment test
 
@@ -251,4 +247,4 @@ The console will show and error about the nginx deployment, indeed the nginx con
 
 ## Sum-up
 
-This handons is just an overview of two technology which can be used to ensure security of a kubernetes cluster. I advise trainees to go deeper in a network plugin such as calico and to get familiar with the Rego language as it will allow them to create amazing custom rules.
+This hand-ons is just an overview of two technology which can be used to ensure security of a kubernetes cluster. I advise trainees to go deeper in a network plugin such as calico and to get familiar with the Rego language as it will allow them to create amazing custom rules.

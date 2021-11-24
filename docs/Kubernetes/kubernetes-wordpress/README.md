@@ -1,11 +1,11 @@
 [**[watch the replay]**](https://dxc.workplace.com/100022623742139/videos/666197697477682){target="_blank"}
 
 # Kubernetes-wordpress
-*This handson training is a follow up of the Kubernetes Introduction talk downloadable [here](https://dxc.workplace.com/download/2556767854651343/Kubernetes-introduction-2019-02-04.pptx?av=100022938067041&eav=AfbzblXl7Czbg1tdSRf0JRV02_7sIWkNLHeW34KZ_TUFGq7cgl-LJPOk0e-M45UleWI&hash=AcqPaYDL3dSkJSPa).*
+*This hands-on training is a follow up of the Kubernetes Introduction talk downloadable [here](https://dxc.workplace.com/download/2556767854651343/Kubernetes-introduction-2019-02-04.pptx?av=100022938067041&eav=AfbzblXl7Czbg1tdSRf0JRV02_7sIWkNLHeW34KZ_TUFGq7cgl-LJPOk0e-M45UleWI&hash=AcqPaYDL3dSkJSPa).*
 
 During this session you will discover the Kubernetes basic components which are used to deploy a high available WordPress stack. If you like consoles and Kubernetes, join us and enjoy the Kubernetes learning trip.
 
-I made the choice to not use all the kubectl functions to priviledge the usage of manifest files. This is because it makes an Infrastructure As Code approach easier.
+I made the choice to not use all the kubectl functions to privilege the usage of manifest files. This is because it makes an Infrastructure As Code approach easier.
 
 # Pre-requisite
 
@@ -14,7 +14,7 @@ I made the choice to not use all the kubectl functions to priviledge the usage o
 
 # Namespace
 
-*A namespace is a Kubernetes environment used to isolate ressources.*
+*A namespace is a Kubernetes environment used to isolate resources.*
 
 ## Create a namespace
 
@@ -52,10 +52,9 @@ kubectl get pods --namespace demo
 >**Observations:**
 >
 > The kubectl cli return :
-> 
+>
 > - The age of the pod
-> - The number of restart, it may help to detect an unstability
-
+> - The number of restart, it may help to detect an instability
 
 ## Check the pod logs
 
@@ -74,7 +73,6 @@ kubectl port-forward --namespace demo pods/wordpress-pod 8080:80
 >
 > kubectl port-forward is a convenient way to access kubernetes endpoints which are not publicly  exposed.
 
-
 ## Robustness
 
 Stop the wordpress container and check the pod status
@@ -83,7 +81,7 @@ Stop the wordpress container and check the pod status
 kubectl exec -ti --namespace demo -c wordpress wordpress-pod kill 1 && kubectl get pods --namespace demo
 ```
 
-Check again the pod satus
+Check again the pod status
 
 ```shell
 kubectl get pods --namespace demo
@@ -91,11 +89,13 @@ kubectl get pods --namespace demo
 
 >**Observations:**
 >
-> After a short period of time the container is restarted. Indeed a pod ensure his contained containers are still up and running. This is the first level of self healing we can find in Kubenetes.
+> After a short period of time the container is restarted. Indeed a pod ensure his contained containers are still up and running. This is the first level of self healing we can find in Kubernetes.
 
 # Config map
 
-*A config map is used to store configurations and apply it to a pod / container. You can create a config map from a directory, a file or again a litteral value.*
+*A config map is used to store configurations and apply it to a pod / container. You can create a config map from a directory, a file or again a literal value.*
+
+// cspell:disable-next-line -- disables checking till the end of the next line.
 
 <img src="images/configmap.png"/>
 
@@ -107,7 +107,7 @@ kubectl apply -f manifests/configmap.yaml
 
 >**Observations:**
 >
-> The data section of a config map contains keypair values used to store configuration items. 
+> The data section of a config map contains key pair values used to store configuration items.
 
 ## Verify it has been created
 
@@ -121,10 +121,9 @@ kubectl get configmap --namespace demo
 > - The number of keys contained into the config map
 > - The age of the config map
 
-
 ## Config map usage
 
-In this example we will populate the environment variables from the config map and create a test file on the pod disk. 
+In this example we will populate the environment variables from the config map and create a test file on the pod disk.
 
 ### Create the pod
 
@@ -156,24 +155,24 @@ Our custom configuration file is returned, thus it was correctly created.
 
 ### Ephemeral storage
 
-To access WordPress and finaliazd the configuration :
+To access WordPress and finalized the configuration :
 
 1. Open a tunnel
 ```shell
 kubectl port-forward --namespace demo pods/wordpress-pod 8080:80
 ```
 
-2. Navigate to http://localhost:8080 and complete the WordPress configuration
+2. Navigate to [http://localhost:8080](http://localhost:8080) and complete the WordPress configuration
 
 3. Delete and recreate the pod
-   
+
 ```shell
 kubectl delete -f manifests/pod-vol.yaml
 kubectl apply -f manifests/pod-vol.yaml
 kubectl port-forward --namespace demo pods/wordpress-pod 8080:80
 ```
 4. Open a tunnel and reach WordPress
-   
+
 ```shell
 kubectl port-forward --namespace demo pods/wordpress-pod 8080:80
 ```
@@ -211,7 +210,6 @@ kubectl get pvc --namespace demo
 > - The status of the binding.
 > - The size of the volume
 
-
 ## Bind the PVC to the wordpress pod
 
 Create the WordPress pod and describe it
@@ -229,15 +227,15 @@ kubectl describe $(kubectl get pods -n demo --output=name) -n demo
 ## Configure WordPress
 
 1. Open a tunnel
-   
+
 ```shell
 kubectl port-forward --namespace demo pods/wordpress-pod 8080:80
 ```
 
-1. Navigate to http://localhost:8080 to complete the configuration
+1. Navigate to [http://localhost:8080](http://localhost:8080) to complete the configuration
 
 2. Delete and recreate the pod
-   
+
 ```shell
 kubectl delete -f manifests/pod-vol-pvc.yaml
 kubectl apply -f manifests/pod-vol-pvc.yaml
@@ -250,8 +248,8 @@ kubectl port-forward --namespace demo pods/wordpress-pod 8080:80
 ```
 
 > **Observations:**
-> 
-> This time you directly reach the WordPress public interfce. It means your configuration survice to the restart. This is because the MySQL data are stored on a persistant volume.
+>
+> This time you directly reach the WordPress public interface. It means your configuration survive to restart. This is because the MySQL data are stored on a persistent volume.
 
 ## Let's delete the pod
 
@@ -266,7 +264,7 @@ kubectl get pods --namespace demo
 
 # ReplicaSet
 
-*Replicasets are used to maintain a number of avaible pods.*
+*Replicasets are used to maintain a number of available pods.*
 
 <img src="images/replicaset.png"/>
 
@@ -302,7 +300,7 @@ Let's create a pod not managed by the replicaset, and list the pods inside the n
 kubectl apply -f manifests/pod.yaml && kubectl get pods --namespace demo
 ```
 
-> **Obersvations:**
+> **Observations:**
 >
 > The pod is automatically terminated. This is because the replicaset manages all the pods which have the label *app: wordpress*. As the maximum number of pods was already created, all the new ones are automatically terminated.
 
@@ -339,8 +337,8 @@ kubectl get pods --namespace demo
     ```
 > **Observations:**
 > 
-> - New pods are created. 
-> - We can create a pod auto scaller to trigger horizontal scale based on pod metrics.
+> - New pods are created.
+> - We can create a pod auto scaler to trigger horizontal scale based on pod metrics.
 
 # Deployment
 
@@ -418,7 +416,7 @@ kubectl describe deployment wordpress-deployment --namespace demo
     kubectl rollout history deployment.v1.apps/wordpress-deployment --namespace demo --revision 2
     ```
 3. Rollback to the revision 1
-   -  Either you undo the latest deployment
+   - Either you undo the latest deployment
         ```shell
         kubectl rollout undo deployment.v1.apps/wordpress-deployment --namespace demo
         ```
@@ -427,11 +425,11 @@ kubectl describe deployment wordpress-deployment --namespace demo
         kubectl rollout undo deployment.v1.apps/wordpress-deployment --to-revision=1 --namespace demo
         ```
 
-**We have a robust deployment, we can lost one pods it will be recreated, we can lost one container it will be recreated. That is super great but we can't load balance the traffic accross the replicas, we can just access it one by one.**
+**We have a robust deployment, we can lost one pods it will be recreated, we can lost one container it will be recreated. That is super great but we can't load balance the traffic across the replicas, we can just access it one by one.**
 
 # Service
 
-*A kubernetes service is an endpoint used to spread the incoming traffic accross multiple pods providing the same service.*
+*A kubernetes service is an endpoint used to spread the incoming traffic across multiple pods providing the same service.*
 
 <img src="images/service.png"/>
 
@@ -452,7 +450,7 @@ kubectl describe services wordpress-svc --namespace demo
 >**Observations:**
 >
 > - You can see the internal IP address of our service as well as the 4 endpoints IPs matching the pods IPs which are behind.
-> - The service is of type ClusterIP, but there are differents kind of service which behave differently (NodeIP, LoadBalancer).
+> - The service is of type ClusterIP, but there are different kind of service which behave differently (NodeIP, LoadBalancer).
 
 ## Update the wordpress configuration
 
@@ -482,9 +480,9 @@ kubectl port-forward --namespace demo  svc/wordpress-svc 8080:80
 # Ingress
 <img src="images/ingress.png"/>
 
-*An ingress is a reverse proxy used to reach the internal applications from a client ouside the cluster.*
+*An ingress is a reverse proxy used to reach the internal applications from a client outside the cluster.*
 
-Let's create our unsecure wordpress ingress
+Let's create our insecure wordpress ingress
 
 ```shell
 kubectl apply -f manifests/ingress-tls.yaml
@@ -500,5 +498,4 @@ kubectl get ingress -n demo
 
 - kubectl port-forward --namespace demo  svc/wordpress-svc 8080:80
 
-
-***Note:*** We have to configure WordPres with the DNS to make it works, indeed there is an internal rewrite mechanism which prevent to make it works if we don't have the good configuation'.
+***Note:*** We have to configure WordPres with the DNS to make it works, indeed there is an internal rewrite mechanism which prevent to make it works if we don't have the good configuration.

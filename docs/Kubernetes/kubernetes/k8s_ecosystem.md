@@ -2,11 +2,9 @@
 <img src="https://render.bitstrips.com/v2/cpanel/fb695398-7ef1-4461-987b-73d3a97805fd-bc9fa5d8-e141-4ea4-879d-bc3d4b22abbc-v1.png?transparent=1&palette=1"/>
 </div>
 
-<div style="fload:left;width:300px">
+<div style="float:left;width:300px">
 <img src="https://www.underconsideration.com/brandnew/archives/dxc_technology_logo_new.png"/>
 </div>
-
-
 
 # Introduction to the Kubernetes ecosystem
 
@@ -17,7 +15,6 @@ In this document i will talk only about the tools which i played with.
 ## Architecture
 
 ### cluster
-
 
 <div style='float:left;  max-width: 50%;height: auto' >
 <img src="https://d33wubrfki0l68.cloudfront.net/99d9808dcbf2880a996ed50d308a186b5900cec9/40b94/docs/tutorials/kubernetes-basics/public/images/module_01_cluster.svg"/>
@@ -38,7 +35,6 @@ A node is a virtual or physical server managed by kubernetes. Each node contains
 - kubelet : Used to manage / orchestrate container deployment
 - kube-proxy : Used to proxyfy the node connections
 
-
 A node is composed of several pods which are logical set of kubernetes component. A pod can contains multiple containers working together to provide a service.
 </div>
 
@@ -50,13 +46,13 @@ A node is composed of several pods which are logical set of kubernetes component
 
 ## Why do we need kubernetes ?
 
-- Enable portability accross infrastructure providers
+- Enable portability across infrastructure providers
 - Orchestrate deployments to ensure a zero down time
 - Rollback deployment if required
 - Offer a common way to deploy application
 - Offer redundancy for masters, nodes and pods
 - Segregation per namespaces
-- Mutualize physcial ressources
+- Mutualize physical resources
 
 ## Administrate a cluster
 
@@ -69,7 +65,7 @@ Kubernetes Operations ([Kops](https://github.com/kubernetes/kops)) is used to:
 ## Deploy services
 
 ### kubectl
-Kubernetes commandlet ([kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)) is used to :
+Kubernetes CLI ([kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)) is used to :
 
 - Deploy kubernetes manifests
 - Update deployments / services
@@ -83,10 +79,8 @@ Kubernetes commandlet ([kubectl](https://kubernetes.io/docs/tasks/tools/install-
 - Remove kubernetes packages
 - Rollback deployments
 
-
 <div style="display: block; margin: auto; width:50%">
 <img  src="https://render.bitstrips.com/v2/cpanel/d8e66e64-ec9c-495f-947e-9bfe52d2523f-bc9fa5d8-e141-4ea4-879d-bc3d4b22abbc-v1.png?transparent=1&palette=1"/>
 </div>
-
 
 ## [Access the tutorial](README.md)

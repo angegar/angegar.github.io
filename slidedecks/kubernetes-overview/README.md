@@ -67,8 +67,8 @@ How to deploy multiple containers in a reliable and repeatable way
 
 # Out of the box features
 
-- Horizontal auto scalling
-- Vertical auto scalling
+- Horizontal auto scaling
+- Vertical auto scaling
 - Storage management / orchestration
 - Rolling update
 - Extendable - Custom Resource definition
@@ -84,7 +84,7 @@ How to deploy multiple containers in a reliable and repeatable way
 - Accelerate your deployments
 - Decrease your downtime
 - Cloud agnostic
-- Decrease infrastructure cost (better manage and tune your ressources)
+- Decrease infrastructure cost (better manage and tune your resources)
 - Decrease overall maintenance cost
 - Decrease observability and monitoring cost
 
@@ -104,7 +104,7 @@ How to deploy multiple containers in a reliable and repeatable way
 - kube-apiserver: exposes the Kubernetes API
 - etcd: key value store used as Kubernetes' backing store for all cluster
 - kube-scheduler: Assign pods to node
-- Kube-contoller-manager: Runs controller processes
+- Kube-controller-manager: Runs controller processes
 
 ---
 
@@ -173,7 +173,6 @@ How to deploy multiple containers in a reliable and repeatable way
 
 ![bg left:40% w:100%](https://github.com/angegar/angegar.github.io/blob/main/slidedecks/kubernetes-overview/img/configmap.png)
 
-
 - Decouple configuration from image content
 - Configuration stored as key pair values
 - Create config map from:
@@ -203,7 +202,7 @@ How to deploy multiple containers in a reliable and repeatable way
 ![bg left w:100%](https://angegar.github.io/Kubernetes/kubernetes-overview/img/persistentvolume.png)
 
 - Piece of storage
-- Privisionned by the administrator or dynamically provisionned
+- Provisioned by the administrator or dynamically provisioned
 - Lifecycle independent of the pod
 
 ---

@@ -30,9 +30,9 @@ Open a tunnel to your pod
 
  `kubectl port-forward -n demo pod/confluence 8080:8090`
 
-Open your navigator and go to http://localhost:8080
+Open your navigator and go to [http://localhost:8080](http://localhost:8080)
 
-After this first step you have a single pod hosting your application which is not accessible from internet. As the pod has an IP adresse your can access it from the cluster only (internally accessible).
+After this first step you have a single pod hosting your application which is not accessible from internet. As the pod has an IP address your can access it from the cluster only (internally accessible).
 
 ## Create a service
 
@@ -42,11 +42,11 @@ Deploy our service in the demo namespace
 
 `kubectl apply -f manifests/service.yaml --namespace demo`
 
-Verify that your service route the trafic to your pod 
+Verify that your service route the traffic to your pod
 
 `kubectl port-forward -n demo svc/confluence-svc 8080:8090`
 
-Go to http://localhost:8080
+Go to [http://localhost:8080](http://localhost:8080)
 
 Describe your service and verify the target endpoint
 
@@ -60,17 +60,17 @@ Describe your service and verify the target endpoints
 
  `kubectl describe svc confluence-svc -n demo`
 
-**Note: You will see 2 IPs adresses matching the 2 pods created**
+**Note: You will see 2 IPs addresses matching the 2 pods created**
 
 Is your service publicly accessible :
 
 `kubectl get svc confluence-svc -n demo`
 
-**Note: the external IP is empty, this is because a sevice of type ClusterIP is not internet facing.**
+**Note: the external IP is empty, this is because a service of type ClusterIP is not internet facing.**
 
 ## Make your service publicly accessible
 
-List aws loadbalancers
+List AWS load balancers
 
 `aws elbv2 describe-load-balancers`
 
@@ -82,7 +82,7 @@ Get the service external IP
 
 `kubectl get svc confluence-svc -n demo`
 
-Your service is now associated with and external ip (fqdn) matching an AWS classic load balancer created by kubernetes. 
+Your service is now associated with and external ip (fqdn) matching an AWS classic load balancer created by kubernetes.
 
 Get your public url and navigate to the url
 
@@ -102,7 +102,7 @@ Try the command below and observe the pods in the demo namespace
 
 `kubectl apply -f manifests/pod.yaml --namespace demo`
 
-The pod is automatically shutdowned by the replicaset as we specified only 1 replica.
+The pod is automatically shutdown by the replicaset as we specified only 1 replica.
 
 **Note: Replicaset is a good way to create a canary deployment**
 
@@ -176,16 +176,8 @@ Create the ingress
 
 `kubectl apply -f manifests/ingress.yaml`
 
-Try to access http://confluence-demo.platformdxc-mg-d0.com
+Try to access [http://confluence-demo.platformdxc-mg-d0.com](http://confluence-demo.platformdxc-mg-d0.com)
 
 ## Persistent volume claim
 
 As the default pod storage type (emptyDir) is ephemeral we may need to create permanent disk with the persistent volume claim;
-
-# References
-
-https://kubernetes.io/fr/docs/reference/kubectl/
-
-https://confluence.atlassian.com/confkb/how-to-generate-a-new-confluence-cfg-xml-425461512.html?_ga=2.16139198.924632318.1562615698-1640495167.1558622810
-
-https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/

@@ -10,7 +10,6 @@
 <img src="https://render.bitstrips.com/v2/cpanel/2a76175b-e7ff-4ec0-b4e0-00ebb1828eb8-bc9fa5d8-e141-4ea4-879d-bc3d4b22abbc-v1.png?transparent=1&palette=1"/>
  </div> -->
 
-
 Welcome to my github page, you will find here documentations and tutorials on several subject on which i had the opportunity to work on.
 
 ## About me
