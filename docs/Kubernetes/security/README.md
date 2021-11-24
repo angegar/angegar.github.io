@@ -244,7 +244,6 @@ spec:
 
 The console will show and error about the nginx deployment, indeed the nginx container is not authorized to be deployed in the **app namespace**
 
-
 ## Sum-up
 
 This hand-ons is just an overview of two technology which can be used to ensure security of a kubernetes cluster. I advise trainees to go deeper in a network plugin such as calico and to get familiar with the Rego language as it will allow them to create amazing custom rules.

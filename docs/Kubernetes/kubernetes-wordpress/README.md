@@ -329,14 +329,14 @@ kubectl get pods --namespace demo
 4. Apply the new configuration
 
     ```shell
-    kubectl apply -f manifests/replicaset.yaml 
+    kubectl apply -f manifests/replicaset.yaml
     ```
 5. Get the pods
     ```shell
     kubectl get pods --namespace demo
     ```
 > **Observations:**
-> 
+>
 > - New pods are created.
 > - We can create a pod auto scaler to trigger horizontal scale based on pod metrics.
 

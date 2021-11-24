@@ -112,9 +112,9 @@ Create a manifest file with the following content:
 ```yaml
 kind: Namespace
 apiVersion: v1
-metadata: 
+metadata:
     name: jenkins-test
-    labels: 
+    labels:
         name: jenkins-test
 ---
 apiVersion: apps/v1beta2
@@ -220,7 +220,7 @@ Helm comes with a linter to check your chart syntax, go into the jenkins helm fo
 ### Deploy your chart
 From your chart folder
 ```shell
-    helm install --name jenkins --namespace jenkins-test --values values.yaml . 
+    helm install --name jenkins --namespace jenkins-test --values values.yaml .
 ```
 
 Access your jenkins server in using the following commands :
@@ -301,7 +301,7 @@ configuration:
     enabled: true
     expectedArtifactIds:
       - k8ArtifactId
- 
+
 stages:
 - id: deployK8Manifest
   type: deployManifest
@@ -332,7 +332,7 @@ pipeline:
   name: Deploy ELK suite
   template:
     source: https://github.dxc.com/raw/lgil3/kube-spinnaker-template/master/elk-template.yml?token=AAASjpLFBNTtMwyqjMS4RZYONXDmwD6uks5bPzPfwA%3D%3D
-  variables: 
+  variables:
     repository: chart-elk
     gitBranch: master
     k8App: elasticsearch
