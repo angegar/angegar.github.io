@@ -22,7 +22,7 @@ Deploy our application pod in the demo namespace
 
 `kubectl apply -f manifests/pod.yaml --namespace demo`
 
-Verify the pods was correctly created 
+Verify the pods was correctly created
 
 `kubectl get pods --namespace demo`
 

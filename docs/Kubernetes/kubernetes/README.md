@@ -89,7 +89,7 @@ For the instance group nodes, the file content is
       role: Node
       subnets:
       - us-west-1a
-      - us-west-1c             
+      - us-west-1c
 ```
 
 change the minSize to 4 and apply the change :

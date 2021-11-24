@@ -8,7 +8,7 @@ The simplest way to perform a blue-green deployment is to implement it from mani
 
 ### Service level
 
-![](./bluegreen.drawio.png)
+![bluegreen](./bluegreen.drawio.png)
 
 A blue green implementation at the Kubernetes service level will work, indeed a service has selectors used to identify the to route the traffic to. Although this solution is simple to implement, there are some drawbacks. Both pods versions must be deployed inside the same namespace which increase the risk of downtime in case of deployment troubles. In addition the newly created pods will not be exposed through a service as the only service is targeting the old version, thus it will be difficult to test the new version.
 
