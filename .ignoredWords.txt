@@ -127,3 +127,8 @@ autoplay
 allowfullscreen
 Mesophere
 Reproductible
+Burstable
+stdout
+stdin
+Fluentd
+ConfigMaps

@@ -21,6 +21,7 @@ nav:
     - 'Ecosystem' : 'Kubernetes/kubernetes/'
     - 'Cluster administration': 'Kubernetes/cluster-administration/'
     - 'Security': 'Kubernetes/security'
+    - 'Best practices': 'Kubernetes/best-practices/README.md'
   - Conferences: Conferences/index.md
 
 
