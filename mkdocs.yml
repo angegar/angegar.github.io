@@ -22,7 +22,9 @@ nav:
     - 'Cluster administration': 'Kubernetes/cluster-administration/'
     - 'Security': 'Kubernetes/security'
     - 'Best practices': 'Kubernetes/best-practices/README.md'
-  - Conferences: Conferences/index.md
+  - Conferences:
+      - 'All Days Devops 2020': 'Conferences/index.md'
+      - 'All Days Devops 2021': 'Conferences/alldaysdevops-2021.md'
 
 
 repo_url: https://github.dxc.com/lgil3/tutorials
