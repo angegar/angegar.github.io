@@ -51,3 +51,13 @@ plugins:
        fallback_to_build_date: true
 extra_css:
   - css/angegar.css
+
+extra:
+  # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#social-links
+  social:
+    - type: 'linkedin'
+      icon: 'fontawesome/brands/linkedin'
+      link: 'https://www.linkedin.com/in/laurent-gil/?locale=en_US'
+    - type: 'github'
+      icon: 'fontawesome/brands/github'
+      link: 'https://github.com/angegar'
