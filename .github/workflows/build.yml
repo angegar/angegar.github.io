@@ -87,7 +87,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     # container: Docker/Dockerfile
-    name: Build mkdocs + marp
+    name: Build and publish
     steps:   
       - name: Checkout code
         uses: actions/checkout@v2 
@@ -98,7 +98,7 @@ jobs:
       - name: Copy requirements.txt
         run: cp requirements.txt .github/actions/build
 
-      - name: Build docs
+      - name: Build and publish website
         id: build
         uses: ./.github/actions/build
     
