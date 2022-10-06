@@ -22,6 +22,8 @@ nav:
     - 'Cluster administration': 'Kubernetes/cluster-administration/'
     - 'Security': 'Kubernetes/security'
     - 'Best practices': 'Kubernetes/best-practices/README.md'
+  - IaaC:
+    - 'Cloud Development Kit': 'cdk/README.md'
   - Conferences:
       - 'All Days Devops 2020': 'Conferences/index.md'
       - 'All Days Devops 2021': 'Conferences/alldaysdevops-2021.md'
