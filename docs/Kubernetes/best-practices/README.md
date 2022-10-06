@@ -87,7 +87,6 @@ As mentioned in the [twelve factors](https://12factor.net/config){target=_blank}
 
 Secrets are often transmitted to a pod via environment variables. This is the easiest way to copy secrets for the CI to the pods. However, it is not really a good practice as secrets in environment variables can be displayed in the container start command logs, which may be inspected by people who should not know it.
 
-
 ??? example "references"
 
     - [learnk8](https://learnk8s.io/production-best-practices#application-development){target=_blank}
