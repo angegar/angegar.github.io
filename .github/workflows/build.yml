@@ -106,3 +106,4 @@ jobs:
     - lint
     - linkCheck
     - spellCheck
+    - styleCheck
