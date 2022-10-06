@@ -23,7 +23,7 @@ nav:
     - 'Security': 'Kubernetes/security'
     - 'Best practices': 'Kubernetes/best-practices/README.md'
   - IaaC:
-    - 'Cloud Development Kit': 'cdk/README.md'
+    - 'Cloud Development Kit': 'cdk/README.html'
   - Conferences:
       - 'All Days Devops 2020': 'Conferences/index.md'
       - 'All Days Devops 2021': 'Conferences/alldaysdevops-2021.md'
