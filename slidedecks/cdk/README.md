@@ -131,13 +131,11 @@ By the default those properties are guaranty by the underlying layers in a decla
 # Pitfalls
 
 - The imperative approach allows a huge flexibility in interconnecting systems. Good software architecture skills are required to keep the code maintainable.
-- Avoid as much as possible conditions into the lower levels, it drastically decreases the flexibility, at the end the code can't be easily deployed in a new environment.
+- Avoid as much as possible to hardcode variables into lower levels, it drastically decreases the flexibility, at the end the code can't be easily deployed in a new environment.
 - Keep the asset lifecycle steps separated (**separation of concerns**) to avoid a big monolith approach and keep flexibility
-- It is not
 
 ---
 
 # Links
 
 - https://github.com/aws-samples/aws-cdk-examples
-
