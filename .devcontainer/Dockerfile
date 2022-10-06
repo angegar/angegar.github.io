@@ -4,7 +4,7 @@
 ARG VARIANT="3.10-bullseye"
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
-ENV MARP_VERSION=1.4.0
+ENV MARP_VERSION=2.2.0
 
 # [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
 ARG NODE_VERSION="16"
