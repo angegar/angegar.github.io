@@ -163,12 +163,12 @@ Soit on multiplie les backend => problème de gestion des backends
 
 # Conclusion
 
-## Poor
+## Pros
 
 - CDK solved a huge variety of problems
 - The imperative approach allows a huge flexibility in interconnecting systems. 
 
-## Const
+## Cons
 
 - Good software architecture skills are required to keep the code maintainable.
 - Code is not fully mutualized across environments
