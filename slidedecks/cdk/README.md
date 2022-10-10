@@ -114,25 +114,74 @@ By the default those properties are guaranty by the underlying layers in a decla
 
 ---
 
-![bg left 90%](img/ms-archi.drawio.png)
+![bg left 90%](img/exemple1.jpg)
+# Do not code with environment in mind
 
-# Sample architecture
+- Such code is not environment agnostic
+- Such code is not predictable through the CD pipeline
+- Such code can't be correctly tested
 
-- Api GateWay
-- Service mesh
-- Compute
-- Network
-- Security
-- Registry
-- ...
-  
 ---
 
-# Pitfalls
+![bg left 90%](img/ms-archi.drawio.png)
 
-- The imperative approach allows a huge flexibility in interconnecting systems. Good software architecture skills are required to keep the code maintainable.
-- Avoid as much as possible to hardcode variables into lower levels, it drastically decreases the flexibility, at the end the code can't be easily deployed in a new environment.
-- Keep the asset lifecycle steps separated (**separation of concerns**) to avoid a big monolith approach and keep flexibility
+# Single pane of glass
+
+<!--
+Sur ce diagramme:
+- tout peut être géré avec du CDK
+- AWS CDK pour la partie cloud
+- CDKTF pour la partie kong / clouflare
+- CDK8s pour la partie kubernetes
+-->
+POOR:
+- CDKTF allows to configure a lot of architectural components
+- Useful to get information from one component and inject it in another one
+
+BUT : 
+- Do not manage everything from one deeply coupled library
+ 
+---
+
+# TFSATE spaghetti
+
+<!--
+il y a bcp de providers.
+
+Soit on regroupe les providers dans un backend => problème de découplage des cycles de vie
+
+Soit on multiplie les backend => problème de gestion des backends
+-->
+- 2537 [providers](https://registry.terraform.io/browse/providers)
+- 264 official + community providers
+
+- To decouple component lifecycles, multiple tfstate must be created
+- Tfstate contains the infrastructure memory
+- Tfstate can contain sensitive data
+
+---
+
+# Conclusion
+
+## Poor
+
+- CDK solved a huge variety of problems
+- The imperative approach allows a huge flexibility in interconnecting systems. 
+
+## Const
+
+- Good software architecture skills are required to keep the code maintainable.
+- Code is not fully mutualized across environments
+- Easy to fall in a monolith approach
+- Do not enforce the separation of concerns
+
+---
+
+# Opiniated solution
+
+- Try to move to IaaC based on [Kubernetes controllers ](https://aws.amazon.com/blogs/containers/aws-controllers-for-kubernetes-ack/) (*work very well when customer wish to move to kubernetes*)
+- Keep CDK to create kubernetes controllers
+- Avoid to use CDKTF because of the constraints bring by TFSTATE files.
 
 ---
 
