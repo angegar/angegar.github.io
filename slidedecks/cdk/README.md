@@ -126,8 +126,8 @@ By the default those properties are guaranty by the underlying layers in a decla
 
 ---
 
-![bg left 90%](img/exemple1.jpg)
-# Do not code with environment in mind
+![bg vertical left 90%](img/predictability.jpeg)
+# Environment agnostic
 
 - Such code is not environment agnostic
 - Such code is not predictable through the CD pipeline
