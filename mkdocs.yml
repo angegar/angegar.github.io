@@ -63,3 +63,6 @@ extra:
     - type: 'github'
       icon: 'fontawesome/brands/github'
       link: 'https://github.com/angegar'
+    - type: 'medium'
+      icon: 'fontawesome/brands/medium'
+      link: 'https://medium.com/@laurent-gil'
