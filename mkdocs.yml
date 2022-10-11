@@ -1,4 +1,4 @@
-site_name: Tutorials
+site_name: Laurent Gil
 site_url: https://angegar.github.io
 site_description: Laurent Gil web site used to host tutorials
 theme:
@@ -29,8 +29,8 @@ nav:
       - 'All Days Devops 2021': 'Conferences/alldaysdevops-2021.md'
 
 
-repo_url: https://github.dxc.com/lgil3/tutorials
-repo_name: tutorials
+repo_url: https://github.com/angegar/angegar.github.io
+repo_name: angegar.github.io
 remote_branch: gh-pages
 google_analytics:
   - UA-10069210-6
@@ -66,3 +66,6 @@ extra:
     - type: 'medium'
       icon: 'fontawesome/brands/medium'
       link: 'https://medium.com/@laurent-gil'
+    - type: 'twitter'
+      icon: 'fontawesome/brands/twitter'
+      link: 'https://twitter.com/angegar'
