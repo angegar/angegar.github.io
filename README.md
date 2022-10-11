@@ -4,26 +4,13 @@
 <img src="https://render.bitstrips.com/v2/cpanel/fb695398-7ef1-4461-987b-73d3a97805fd-bc9fa5d8-e141-4ea4-879d-bc3d4b22abbc-v1.png?transparent=1&palette=1"/>
 </div>
 
-# Laurent Gil
+# [Laurent Gil](https://angegar.github.io/)
  <div  style="display: block; margin: auto; width:50%">
 <img src="https://render.bitstrips.com/v2/cpanel/2a76175b-e7ff-4ec0-b4e0-00ebb1828eb8-bc9fa5d8-e141-4ea4-879d-bc3d4b22abbc-v1.png?transparent=1&palette=1"/>
  </div>
 
-Welcome to my github page, you will find here documentations and tutorials on multiple subjects on which I had the opportunity to work.
+Welcome to my website hosted on GitHub pages. It gathers conferences, blog posts, tutorials I created during my career.
 
-## Docker
+I hope you will enjoy the content. I sure there are room for improvement thus do not hesitate to open a PR.
 
-- [Overview [video]](https://dxc.workplace.com/100023348342367/videos/579408879514052/)
-  
-## Kubernetes
-
-- [kubernetes overview](https://angegar.github.io/Kubernetes/kubernetes-overview/README.html)
-- [kubernetes ecosystem](docs/Kubernetes/kubernetes/k8s_ecosystem.md)
-- [kubernetes the hard way](docs/Kubernetes/kubernetes-basics/README.md)
-- [Deploy WordPress - part 1](docs/Kubernetes/kubernetes-wordpress/README.md) [**[video]**](https://dxc.workplace.com/100022623742139/videos/666197697477682)
-- [Manage your applications with Helm](docs/Kubernetes/kubernetes-helm/README.md) [**[video]**](https://dxc.workplace.com/100022623742139/videos/724290418335076/)
-
-## Jenkins
-
-- [Standard onboarding [video]](https://dxc.workplace.com/100022938067041/videos/696839277757335/)
-- [Onboard with a GitHub application [video]](https://dxc.workplace.com/100022938067041/videos/706664710108125/)
+[Website URL](https://angegar.github.io/)
