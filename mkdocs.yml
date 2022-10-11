@@ -31,6 +31,7 @@ nav:
 
 repo_url: https://github.com/angegar/angegar.github.io
 repo_name: angegar.github.io
+edit_uri: 'edit/main/docs'
 remote_branch: gh-pages
 google_analytics:
   - UA-10069210-6
