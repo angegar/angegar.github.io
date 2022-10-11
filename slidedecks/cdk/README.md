@@ -29,9 +29,13 @@ header: 'CKD - The good the bad and the ugly'
 # Problem Statement
 
 <!--
-Lien avec les SRE qui doivent gérer de l'infrastructure avec du code
+Platform engineers:
+
+- concevoir et construire des chaines d'outils et des processus permettant l'autonomie des développeurs sur les sujets du cloud
+
+- fournir des librairies / interface aux utilisateurs
 -->
-SRE needs to :
+Platform engineers need to :
 
 - Manage infrastructures at scale (CDK)
 - Manage applications configuration at scale ([CDKTF](https://www.terraform.io/cdktf) | [CDK8S](https://cdk8s.io/))
@@ -40,12 +44,20 @@ SRE needs to :
 MUTUALIZE THOSE EFFORTS => LIBRARY CREATION
 
 ---
-<!-- ![bg right 80%](https://bamfstyle.com/wp-content/uploads/2020/05/manwithnoname-main1.jpg) -->
+
 ![bg right 80%](img/the_good.jpg)
 # The GOOD
 
 ---
 
+<!--
+Construct:
+
+- pb est de définir le niveau d'abstraction du construct
+- ensemble logic de composants contenant la valeur ajoutée de l'entreprise
+- 1 stack par environnement
+
+-->
 ![bg left 100%](img/aws-cdk.jpg)
 # Features
 
