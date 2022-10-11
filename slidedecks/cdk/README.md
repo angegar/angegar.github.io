@@ -138,9 +138,9 @@ POOR:
 - CDKTF allows to configure a lot of architectural components
 - Useful to get information from one component and inject it in another one
 
-BUT : 
+BUT :
 - Do not manage everything from one deeply coupled library
- 
+
 ---
 
 # TFSATE spaghetti
@@ -155,7 +155,7 @@ Soit on multiplie les backend => problème de gestion des backends
 - 2537 [providers](https://registry.terraform.io/browse/providers)
 - 264 official + community providers
 
-- To decouple component lifecycles, multiple tfstate must be created
+- To decouple component lifecycle, multiple tfstate must be created
 - Tfstate contains the infrastructure memory
 - Tfstate can contain sensitive data
 
@@ -166,12 +166,12 @@ Soit on multiplie les backend => problème de gestion des backends
 ## Pros
 
 - CDK solved a huge variety of problems
-- The imperative approach allows a huge flexibility in interconnecting systems. 
+- The imperative approach allows a huge flexibility in interconnecting systems.
 
 ## Cons
 
 - Good software architecture skills are required to keep the code maintainable.
-- Code is not fully mutualized across environments
+- Code is not fully mutualised across environments
 - Easy to fall in a monolith approach
 - Do not enforce the separation of concerns
 
@@ -179,7 +179,7 @@ Soit on multiplie les backend => problème de gestion des backends
 
 # Opiniated solution
 
-- Try to move to IaaC based on [Kubernetes controllers ](https://aws.amazon.com/blogs/containers/aws-controllers-for-kubernetes-ack/) (*work very well when customer wish to move to kubernetes*)
+- Try to move to IaaC based on [Kubernetes controllers](https://aws.amazon.com/blogs/containers/aws-controllers-for-kubernetes-ack/) (*work very well when customer wish to move to kubernetes*)
 - Keep CDK to create kubernetes controllers
 - Avoid to use CDKTF because of the constraints bring by TFSTATE files.
 
