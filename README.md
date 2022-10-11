@@ -11,6 +11,6 @@
 
 Welcome to my website hosted on GitHub pages. It gathers conferences, blog posts, tutorials I created during my career.
 
-I hope you will enjoy the content. I sure there are room for improvement thus do not hesitate to open a PR.
+I hope you will enjoy the content. I am sure there are room for improvement thus do not hesitate to open a PR.
 
 [Website URL](https://angegar.github.io/)
