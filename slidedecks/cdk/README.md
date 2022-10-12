@@ -68,6 +68,18 @@ Construct:
 
 ---
 
+# Easyly create infrastructure
+
+- CDK construct contains shortcup which speed up the development
+- IAM permissions are implicitly managed
+
+	`lambdaFunction.addEventSource(s3PutEventSource);`
+<!--
+The code above is used to trigger a lambda function when a file is added to a S3 bucket. The IAM permission are automatically manage so that there is not need to code the permisions.
+-->
+
+---
+
 # Software Delivery Life Cycle
 
 - Enable developers to manage their infrastructure with their preferred language
