@@ -57,6 +57,7 @@ Construct:
 - ensemble logic de composants contenant la valeur ajoutée de l'entreprise
 - 1 stack par environnement
 
+Javascript Interop Interface (JSII)
 -->
 ![bg left 100%](img/aws-cdk.jpg)
 # Features
@@ -73,7 +74,7 @@ Construct:
 - CDK construct contains shortcup which speed up the development
 - IAM permissions are implicitly managed
 
-	`lambdaFunction.addEventSource(s3PutEventSource);`
+`lambdaFunction.addEventSource(s3PutEventSource);`
 <!--
 The code above is used to trigger a lambda function when a file is added to a S3 bucket. The IAM permission are automatically manage so that there is not need to code the permisions.
 -->
