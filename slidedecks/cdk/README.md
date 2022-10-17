@@ -3,7 +3,7 @@ marp: true
 theme: default
 paginate: true
 footer: 'lg7983@gmail.com'
-header: 'CKD - The good the bad and the ugly'
+header: 'CDK - The good the bad and the ugly'
 ---
 
 ![bg right ](https://ih1.redbubble.net/image.1084494606.3667/fmp,x_small,gloss,wall_texture,product,750x1000.jpg)
