@@ -186,6 +186,12 @@ Soit on multiplie les backend => problème de gestion des backends
 
 ---
 
+# Example
+
+[![code demo](img/cdk-example-1.jpeg)](https://github.com/angegar/cdk-eks/blob/master/main.ts)
+
+---
+
 # Conclusion
 
 ## Pros
