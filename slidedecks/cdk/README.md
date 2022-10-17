@@ -81,6 +81,12 @@ The code above is used to trigger a lambda function when a file is added to a S3
 
 ---
 
+# Example
+
+[![code demo](img/cdk-example-1.jpeg)](https://github.com/angegar/cdk-eks/blob/master/main.ts)
+
+---
+
 # Software Delivery Life Cycle
 
 - Enable developers to manage their infrastructure with their preferred language
@@ -183,12 +189,6 @@ Soit on multiplie les backend => problème de gestion des backends
 - To decouple component lifecycle, multiple tfstate must be created
 - Tfstate contains the infrastructure memory
 - Tfstate can contain sensitive data
-
----
-
-# Example
-
-[![code demo](img/cdk-example-1.jpeg)](https://github.com/angegar/cdk-eks/blob/master/main.ts)
 
 ---
 
