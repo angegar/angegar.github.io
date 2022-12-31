@@ -21,7 +21,7 @@ transition: drop
 
 <div class="col">
 
-![drop-shadow:0,5px,10px,rgba(0,0,0,.4) width:150px](./img/laurent-gil.png)
+![drop-shadow:0,5px,10px,rgba(0,0,0,.4) width:150px](img/laurent-gil.png)
 
 <!-- markdown-link-check-disable -->
 ## [Laurent GIL](https://www.linkedin.com/in/laurent-gil/?locale=en_US)

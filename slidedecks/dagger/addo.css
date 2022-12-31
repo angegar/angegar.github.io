@@ -5,7 +5,7 @@
 section {
     width: 1280px;
     height: 960px;
-    background: #FFF url(./assets/background/banner.png) no-repeat;
+    background: #FFF url(./img/background/banner.png) no-repeat;
     background-size: 1280px;
     font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 20pt;
@@ -14,7 +14,7 @@ section {
 }
 
 section.main {
-    background: #FFF url(./assets/background/main.png) no-repeat;
+    background: #FFF url(./img/background/main.png) no-repeat;
     background-size: 1280px;
     color: #FFF;
 }
@@ -33,7 +33,7 @@ section.main .author {
 }
 
 section.header {
-    background: #FFF url(./assets/background/title.png) no-repeat;
+    background: #FFF url(./img/background/title.png) no-repeat;
     background-size: 1280px;
 }
 
@@ -44,7 +44,7 @@ section.hidden {
 }
 
 section.thank {
-    background: #FFF url(./assets/background/thank.png) no-repeat;
+    background: #FFF url(./img/background/thank.png) no-repeat;
     background-size: 1280px;
     color: #FFF;
     text-align: center;

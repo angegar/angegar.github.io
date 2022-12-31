@@ -9,7 +9,7 @@ build_marp () {
     if [ -z "$theme" ]; then
         marp -I "$source" -o "$destination"
     else
-        marp -I "$source" -o "$destination" --theme "$theme"
+        marp -I "$source" -o "$destination" --theme-set "$theme"
     fi
 
     if [ -d "$source/img" ]; then 
@@ -27,7 +27,7 @@ build_marp slidedecks/kubernetes-overview docs/Kubernetes/kubernetes-overview
 build_marp slidedecks/cdk docs/cdk/
 
 ## Build Dagger slides
-build_marp slidedecks/dagger docs/dagger/ slidedecks/dagger/addo.css
+build_marp slidedecks/dagger docs/dagger/ addo.css
 
 ## Build web site - must be the latest task
 mkdocs build

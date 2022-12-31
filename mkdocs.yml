@@ -25,11 +25,11 @@ nav:
   - IaaC:
     - 'Cloud Development Kit': 'cdk/README.html'
   - CI/CD:
-    - 'Dagger': 'docs/dagger/README.html'
+    - 'Dagger': 'dagger/README.html'
   - Conferences:
       - 'All Days Devops 2020': 'Conferences/index.md'
       - 'All Days Devops 2021': 'Conferences/alldaysdevops-2021.md'
-      - 'All Days Devops 2022': 'docs/dagger/README.html'
+      - 'All Days Devops 2022': 'dagger/README.html'
 
 
 repo_url: https://github.com/angegar/angegar.github.io
