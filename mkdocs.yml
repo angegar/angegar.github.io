@@ -27,6 +27,7 @@ nav:
   - Conferences:
       - 'All Days Devops 2020': 'Conferences/index.md'
       - 'All Days Devops 2021': 'Conferences/alldaysdevops-2021.md'
+      - 'All Days Devops 2022': 'docs/dagger/README.html'
 
 
 repo_url: https://github.com/angegar/angegar.github.io
