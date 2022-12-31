@@ -3,9 +3,15 @@
 build_marp () {
     source="$1"
     destination="$2"
+    theme="$3"
 
     # marp "$source/README.md" -o "$destination/README.html"
-    marp -I "$source" -o "$destination"
+    if [ -z "$theme" ]; then
+        marp -I "$source" -o "$destination"
+    else
+        marp -I "$source" -o "$destination" --theme "$theme"
+    fi
+
     if [ -d "$source/img" ]; then 
         cp -r "$source/img" "$destination/"
     fi
@@ -19,6 +25,9 @@ build_marp slidedecks/kubernetes-overview docs/Kubernetes/kubernetes-overview
 
 ## Build CDK slides
 build_marp slidedecks/cdk docs/cdk/
+
+## Build Dagger slides
+build_marp slidedecks/dagger docs/dagger/ slidedecks/dagger/addo.css
 
 ## Build web site - must be the latest task
 mkdocs build

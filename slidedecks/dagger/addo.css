@@ -1,0 +1,81 @@
+/* @theme addo2022 */
+
+@import 'default';
+
+section {
+    width: 1280px;
+    height: 960px;
+    background: #FFF url(./assets/background/banner.png) no-repeat;
+    background-size: 1280px;
+    font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 20pt;
+    color: #222;
+    padding-top: 200px;
+}
+
+section.main {
+    background: #FFF url(./assets/background/main.png) no-repeat;
+    background-size: 1280px;
+    color: #FFF;
+}
+
+section.main h1,
+section.header h1 {
+    margin: 0 50px;
+    color: #FFF;
+}
+
+section.main .author {
+    font-size: 20pt;
+    position: absolute;
+    left: 130px;
+    bottom: 80px;
+}
+
+section.header {
+    background: #FFF url(./assets/background/title.png) no-repeat;
+    background-size: 1280px;
+}
+
+section.hidden {
+    display: none;
+    height: 0;
+    width: 0;
+}
+
+section.thank {
+    background: #FFF url(./assets/background/thank.png) no-repeat;
+    background-size: 1280px;
+    color: #FFF;
+    text-align: center;
+}
+
+section.thank p {
+    padding-top: 250px;
+}
+
+h1 {
+    font-size: 44pt;
+}
+
+.container {
+    display: flex;
+}
+
+.col {
+    flex: 1;
+    text-align: center;
+}
+
+.col img {
+    display: flex;
+    margin: auto
+}
+
+.col h2 {
+    text-align: center
+}
+
+strong {
+    color: rgb(202, 13, 76);
+}
