@@ -21,7 +21,7 @@ transition: drop
 
 <div class="col">
 
-![drop-shadow:0,5px,10px,rgba(0,0,0,.4) width:150px](./assets/laurent-gil.png)
+![drop-shadow:0,5px,10px,rgba(0,0,0,.4) width:150px](./img/laurent-gil.png)
 
 <!-- markdown-link-check-disable -->
 ## [Laurent GIL](https://www.linkedin.com/in/laurent-gil/?locale=en_US)
@@ -35,7 +35,7 @@ Kubernetes evangelist
 
 <div class="col">
 
-![drop-shadow:0,4px,10px,rgba(0,0,0,.4) width:150px](./assets/guillaume-camus.png)
+![drop-shadow:0,4px,10px,rgba(0,0,0,.4) width:150px](./img/guillaume-camus.png)
 <!-- markdown-link-check-disable -->
 ## [Guillaume CAMUS](https://www.linkedin.com/in/guillaumecamus/?locale=en_US)
 <!-- markdown-link-check-enable -->
@@ -123,7 +123,7 @@ By using a container approach, Dagger solved the following issues :
 
 ---
 <!-- _class: header -->
-![bg center:40% 40%](./assets/dagger_logo_portrait_on_black.svg)
+![bg center:40% 40%](./img/dagger_logo_portrait_on_black.svg)
 
 <!--
 Why are we presenting Dagger today?
@@ -143,7 +143,7 @@ and I wanted to give you some feedback on it.
 - **Independent** and **agnostic** of any language
 - **Can be used locally**
 
-![bg right height:350px](assets/dagger-arch.png)
+![bg right height:350px](img/dagger-arch.png)
 
 <!--
 Dagger is a programmable CI/CD engine that runs your pipelines in containers.
@@ -158,7 +158,7 @@ This has several benefits:
 
 # <fit> How does it work ?
 
-![bg right h:50%](assets/dagger-how-it-work.excalidraw.png)
+![bg right h:50%](img/dagger-how-it-work.excalidraw.png)
 
 <!--
 Dagger comes as an overlay to docker.
@@ -171,7 +171,7 @@ Which will execute your pipeline.
 
 # Some concept
 
-![bg left 80%](assets/dagger.excalidraw.png)
+![bg left 80%](img/dagger.excalidraw.png)
 
 - **Plan**: is the pipeline manifest.
   - **Actions**: Define jobs to execute
@@ -219,12 +219,12 @@ And finally we implement the Adult structure with John. Of course, if we put an 
 Dagger uses this language to describe the pipeline. This is very useful, because if we make an error we are immediately alerted, because the plan does not compile.
 -->
 
-![bg right 60%](assets/cue-example.png)
+![bg right 60%](img/cue-example.png)
 
 ---
 <!-- _class: header -->
 
-![bg right:50% w:100%](assets/hands-on.jpg)
+![bg right:50% w:100%](img/hands-on.jpg)
 
 # Hands-on time
 
@@ -236,7 +236,7 @@ Now it's time to practice.
 
 # Use case
 
-![bg right fit](assets/pipeline.png)
+![bg right fit](img/pipeline.png)
 
 A simple pipeline to build the presentation slides.
 
@@ -264,8 +264,8 @@ We have a simple pipeline. In 3 steps:
 
 # All start<br />with a Plan
 
-![50% fit](assets/loves-plan-together.jpeg)
-![bg right fit](assets/dagger-plan.png)
+![50% fit](img/loves-plan-together.jpeg)
+![bg right fit](img/dagger-plan.png)
 
 <!--
 As we explained in the slide of dagger's concepts.
@@ -285,7 +285,7 @@ We can see that there are some particularities to the language with the hashtag 
 
 # Import dependencies
 
-![bg left fit](assets/dagger-import.png)
+![bg left fit](img/dagger-import.png)
 
 - Centrally develop common definitions
 - Speed up pipeline creation by mutualize / reusing code
@@ -308,7 +308,7 @@ It also allows us to ensure a relative homogeneity between projects.
 
 # Markdown definitions
 
-![h:480](assets/dagger-definition-markdown.excalidraw.png)
+![h:480](img/dagger-definition-markdown.excalidraw.png)
 
 <!--
 Ok, let's start by creating our first definition.
@@ -336,7 +336,7 @@ Now that we have our definitions, how can we use them?
 
 # Lint in action
 
-![h:480](assets/dagger-lint-action.excalidraw.png)
+![h:480](img/dagger-lint-action.excalidraw.png)
 
 <!--
 We start by importing our cue package.
@@ -348,7 +348,7 @@ And we define our source and file input parameters.
 
 # How to use a custom image?
 
-![h:480](assets/dagger-lint-action-ecr.excalidraw.png)
+![h:480](img/dagger-lint-action-ecr.excalidraw.png)
 
 <!--
 As we have seen in the definition of the markdown lint.
@@ -372,7 +372,7 @@ Ok, I know how to create actions, but where is my pipeline?
 
 # Build
 
-![bg right fit](assets/dagger-action-build.excalidraw.png)
+![bg right fit](img/dagger-action-build.excalidraw.png)
 
 - Chain multiple steps
 - Export action onto the host file system
@@ -397,7 +397,7 @@ But that's not all! We are in a container. So we have to write the build output 
 
 # Interact with<br/>the host
 
-![bg h:450 left ](assets/client-filesystem.excalidraw.png)
+![bg h:450 left ](img/client-filesystem.excalidraw.png)
 
 <!--
 To do this, we add a client:filesystem instruction to our plan.
@@ -408,7 +408,7 @@ And we link the output of our build actions to the content.
 
 ---
 
-<video controls="controls" src="assets/dagger-build.mov">
+<video controls="controls" src="img/dagger-build.mov">
 <p>Video montrant l'execution de du pipeline</p>
 </video>
 

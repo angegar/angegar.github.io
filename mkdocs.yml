@@ -18,12 +18,14 @@ nav:
     - 'Hands-on': 'Kubernetes/kubernetes-wordpress'
     - 'Blue-green': 'Kubernetes/bluegreen'
     - 'Helm': 'Kubernetes/kubernetes-helm/README.md'
-    - 'Ecosystem' : 'Kubernetes/kubernetes/'
+    - 'Ecosystem': 'Kubernetes/kubernetes/'
     - 'Cluster administration': 'Kubernetes/cluster-administration/'
     - 'Security': 'Kubernetes/security'
     - 'Best practices': 'Kubernetes/best-practices/README.md'
   - IaaC:
     - 'Cloud Development Kit': 'cdk/README.html'
+  - CI/CD:
+    - 'Dagger': 'docs/dagger/README.html'
   - Conferences:
       - 'All Days Devops 2020': 'Conferences/index.md'
       - 'All Days Devops 2021': 'Conferences/alldaysdevops-2021.md'
