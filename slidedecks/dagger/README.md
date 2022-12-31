@@ -23,7 +23,9 @@ transition: drop
 
 ![drop-shadow:0,5px,10px,rgba(0,0,0,.4) width:150px](./assets/laurent-gil.png)
 
+<!-- markdown-link-check-disable -->
 ## [Laurent GIL](https://www.linkedin.com/in/laurent-gil/?locale=en_US)
+<!-- markdown-link-check-enable -->
 
 DevOps Coach,
 AWS Solution Architect,
@@ -34,8 +36,9 @@ Kubernetes evangelist
 <div class="col">
 
 ![drop-shadow:0,4px,10px,rgba(0,0,0,.4) width:150px](./assets/guillaume-camus.png)
-
+<!-- markdown-link-check-disable -->
 ## [Guillaume CAMUS](https://www.linkedin.com/in/guillaumecamus/?locale=en_US)
+<!-- markdown-link-check-enable -->
 
 <!--
 I am Guillaume. I've been working at manomano for 5 years where I had several roles,
