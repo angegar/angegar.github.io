@@ -156,7 +156,7 @@ This has several benefits:
 -->
 ---
 
-# <fit> How does it work ?
+# How does it work ?
 
 ![bg right h:50%](img/dagger-how-it-work.excalidraw.png)
 
@@ -408,11 +408,18 @@ And we link the output of our build actions to the content.
 
 ---
 
-<video controls="controls" src="img/dagger-build.mov">
-<p>Video montrant l'execution de du pipeline</p>
+<!-- <video controls src="img/dagger-build.mov">
+<p>Video showing the pipeline execution</p>
+</video> -->
+
+<video controls>
+  <source src="img/dagger-build.mov" type="video/quicktime">
+
+  Video showing the pipeline execution
 </video>
 
 ---
+
 <!-- _class: header -->
 # Our experience feedback
 
