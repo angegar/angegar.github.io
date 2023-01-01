@@ -19,6 +19,7 @@ build_marp () {
 
 # ==================================================================
 
+echo "Marp version: $(marp --version)" >> $GITHUB_STEP_SUMMARY
 
 ## Build Kubernetes slides
 build_marp slidedecks/kubernetes-overview docs/Kubernetes/kubernetes-overview
