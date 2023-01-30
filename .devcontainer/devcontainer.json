@@ -28,7 +28,8 @@
 			},
 			"custom": true, // Enable the `custom` dictionary
 			"internal-terms": false // Disable the `internal-terms` dictionary
-		  }
+		  },
+		  "markdown.marp.enableHtml": true
 		// "python.pythonPath": "/usr/local/bin/python",
 		// "python.languageServer": "Pylance",
 		// "python.linting.enabled": true,
