@@ -15,7 +15,7 @@ Welcome to my github page, you will find here documentations and tutorials on mu
 ## About me
 
 <div style="float:right; width:30%;  margin-left:10%;">
-<img src="./img/laurent.png"/>
+<img src="./img/laurent2.jpg"/>
 </div>
 
 Passionate by technology and automation, I started my DevOps journey 10 years ago in creating my first CI pipelines. Few years later I spread the DevOps culture across the DXC company as DevOps Coach. Seeing the need to mutualize the CI/CD tools chain across the company,I engaged in the SRE path, conducting me to create an infrastructure hosting more than 20000
