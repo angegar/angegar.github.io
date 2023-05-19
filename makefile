@@ -17,7 +17,8 @@ install:
 	pip3 install -r actions/build/requirements.txt
 
 serve:
-	source venv/bin/activate && mkdocs serve 
+	.github/actions/build/entrypoint.sh
+	mkdocs serve 
 
 create:
 	source venv/bin/activate && mkdocs new tutorials

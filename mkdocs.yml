@@ -12,6 +12,7 @@ nav:
   - Home: 'index.md'
   - DevOps: 
       - 'Documentation as code': 'devops/doc-as-code'
+  - Platform Engineering: 'platform-engineering/README.html'
   - Kubernetes:
     - 'Overview': 'Kubernetes/kubernetes-overview/README.html'
     - 'Basic usage': 'Kubernetes/kubernetes-basics'
