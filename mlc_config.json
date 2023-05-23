@@ -12,6 +12,9 @@
       ,
       {
         "pattern": "^http://confluence-demo.platformdxc-mg-d0.com"
+      },
+      {
+        "pattern": "https://twitter.com*"
       }
     ]
   }
