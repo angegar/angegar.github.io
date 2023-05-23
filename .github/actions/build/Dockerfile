@@ -27,5 +27,4 @@ RUN python3 -m pip install yq && \
    	tar xvf marp.tar.gz -C /usr/local/bin && \
     pip install -r requirements.txt
 
-
 ENTRYPOINT ["entrypoint.sh"] 

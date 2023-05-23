@@ -41,4 +41,5 @@ build_marp slidedecks/dagger docs/dagger/ addo.css
 mkdocs build
 
 export MKDOCS_GIT_COMMITTERS_APIKEY=$GH_TOKEN
-mkdocs gh-deploy --force
+git config --global --add safe.directory /github/workspace
+mkdocs gh-deploy --force --clean
