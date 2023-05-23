@@ -1,0 +1,1178 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Laurent Gil web site used to host tutorials">
+      
+      
+      
+        <link rel="canonical" href="https://angegar.github.io/Kubernetes/best-practices/">
+      
+      
+        <link rel="prev" href="../kubernetes-helm/">
+      
+      
+        <link rel="next" href="../../cdk/README.html">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
+    
+    
+      
+        <title>Best practices - Laurent Gil</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/angegar.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#application-development-best-practices" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Laurent Gil" class="md-header__button md-logo" aria-label="Laurent Gil" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laurent Gil
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Best practices
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/angegar/angegar.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    angegar.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Laurent Gil" class="md-nav__button md-logo" aria-label="Laurent Gil" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Laurent Gil
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/angegar/angegar.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    angegar.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          DevOps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          DevOps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops/doc-as-code" class="md-nav__link">
+        Documentation as code
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../platform-engineering/README.html" class="md-nav__link">
+        Platform Engineering
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-overview/README.html" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-basics" class="md-nav__link">
+        Basic usage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-wordpress" class="md-nav__link">
+        Hands-on
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bluegreen" class="md-nav__link">
+        Blue-green
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-helm/" class="md-nav__link">
+        Helm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes/" class="md-nav__link">
+        Ecosystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cluster-administration/" class="md-nav__link">
+        Cluster administration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Best practices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Best practices
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#health-checks" class="md-nav__link">
+    Health checks
+  </a>
+  
+    <nav class="md-nav" aria-label="Health checks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#readiness-probes" class="md-nav__link">
+    Readiness probes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liveness-probes" class="md-nav__link">
+    Liveness probes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readiness-and-liveness-must-be-different" class="md-nav__link">
+    Readiness and liveness must be different
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apps-are-independent" class="md-nav__link">
+    Apps are independent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#high-availability" class="md-nav__link">
+    High availability
+  </a>
+  
+    <nav class="md-nav" aria-label="High availability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-more-than-one-pod" class="md-nav__link">
+    Use more than one pod
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-pod-affinity" class="md-nav__link">
+    Use pod affinity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod-disruption-budget" class="md-nav__link">
+    Pod disruption budget
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources-utilization" class="md-nav__link">
+    Resources utilization
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources utilization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-resource-request" class="md-nav__link">
+    Configure resource request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-resource-limit" class="md-nav__link">
+    Configure resource limit
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tagging-resources" class="md-nav__link">
+    Tagging resources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    Logging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling" class="md-nav__link">
+    Scaling
+  </a>
+  
+    <nav class="md-nav" aria-label="Scaling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stateless-application" class="md-nav__link">
+    Stateless application
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#horizontal-pod-auto-scaler" class="md-nav__link">
+    Horizontal pod auto scaler
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-secrets" class="md-nav__link">
+    Configuration and secrets
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and secrets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#externalize-configuration" class="md-nav__link">
+    Externalize configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mount-secrets-as-volume" class="md-nav__link">
+    Mount secrets as volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          IaaC
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          IaaC
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cdk/README.html" class="md-nav__link">
+        Cloud Development Kit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          CI/CD
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          CI/CD
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dagger/README.html" class="md-nav__link">
+        Dagger
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Conferences
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Conferences
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Conferences/" class="md-nav__link">
+        All Days Devops 2020
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Conferences/alldaysdevops-2021/" class="md-nav__link">
+        All Days Devops 2021
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Conferences/alldaysdevops-2022/" class="md-nav__link">
+        All Days Devops 2022
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#health-checks" class="md-nav__link">
+    Health checks
+  </a>
+  
+    <nav class="md-nav" aria-label="Health checks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#readiness-probes" class="md-nav__link">
+    Readiness probes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liveness-probes" class="md-nav__link">
+    Liveness probes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readiness-and-liveness-must-be-different" class="md-nav__link">
+    Readiness and liveness must be different
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apps-are-independent" class="md-nav__link">
+    Apps are independent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#high-availability" class="md-nav__link">
+    High availability
+  </a>
+  
+    <nav class="md-nav" aria-label="High availability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-more-than-one-pod" class="md-nav__link">
+    Use more than one pod
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-pod-affinity" class="md-nav__link">
+    Use pod affinity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod-disruption-budget" class="md-nav__link">
+    Pod disruption budget
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources-utilization" class="md-nav__link">
+    Resources utilization
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources utilization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-resource-request" class="md-nav__link">
+    Configure resource request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-resource-limit" class="md-nav__link">
+    Configure resource limit
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tagging-resources" class="md-nav__link">
+    Tagging resources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    Logging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling" class="md-nav__link">
+    Scaling
+  </a>
+  
+    <nav class="md-nav" aria-label="Scaling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stateless-application" class="md-nav__link">
+    Stateless application
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#horizontal-pod-auto-scaler" class="md-nav__link">
+    Horizontal pod auto scaler
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-secrets" class="md-nav__link">
+    Configuration and secrets
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and secrets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#externalize-configuration" class="md-nav__link">
+    Externalize configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mount-secrets-as-volume" class="md-nav__link">
+    Mount secrets as volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="application-development-best-practices">Application development best practices<a class="headerlink" href="#application-development-best-practices" title="Permanent link">&para;</a></h1>
+<h2 id="health-checks">Health checks<a class="headerlink" href="#health-checks" title="Permanent link">&para;</a></h2>
+<h3 id="readiness-probes">Readiness probes<a class="headerlink" href="#readiness-probes" title="Permanent link">&para;</a></h3>
+<p>Readiness probe is used to notify kubelet that the app is ready to receive traffic. If this probe is not configured, the application will receive traffic as soon as the container start whereas the application may not be really ready.</p>
+<h3 id="liveness-probes">Liveness probes<a class="headerlink" href="#liveness-probes" title="Permanent link">&para;</a></h3>
+<p>Liveness probe is used to restart a container when there is an issue. If a container fully consumes the allocated memory, it will no longer be able to answer the readiness probe checks, thus it will be removed / detached from the service but it will remain registered as an active replica. To sum-up, it will consume resources whereas it will no longer receive workload.</p>
+<h2 id="readiness-and-liveness-must-be-different">Readiness and liveness must be different<a class="headerlink" href="#readiness-and-liveness-must-be-different" title="Permanent link">&para;</a></h2>
+<p>When both probes are configured to monitor the same endpoint, you can observe weird effects. Indeed kubelet will receive a not ready or not alive signal which will detached the container from the service and delete it at the same time. The consequence might be to observe dropping connections because the container does not have enough time to drain the current connections or processes.</p>
+<h2 id="apps-are-independent">Apps are independent<a class="headerlink" href="#apps-are-independent" title="Permanent link">&para;</a></h2>
+<p>Do not use dependencies endpoint as a targeted endpoint of a liveness or readiness probe.</p>
+<h2 id="high-availability">High availability<a class="headerlink" href="#high-availability" title="Permanent link">&para;</a></h2>
+<h3 id="use-more-than-one-pod">Use more than one pod<a class="headerlink" href="#use-more-than-one-pod" title="Permanent link">&para;</a></h3>
+<p>An application should run on more than one replica. If one of the replicas fails the other will be able to handle the traffic until a new replica will be spun-up.</p>
+<h3 id="use-pod-affinity">Use pod affinity<a class="headerlink" href="#use-pod-affinity" title="Permanent link">&para;</a></h3>
+<p>Having multiple replica will not guaranty the high availability of an application. Indeed all the replicas may be hosted on the same node. To avoid this situation, post affinity may be used to ensure two pods will not be hosted on the same node.</p>
+<h3 id="pod-disruption-budget">Pod disruption budget<a class="headerlink" href="#pod-disruption-budget" title="Permanent link">&para;</a></h3>
+<p>By default, Kubernetes uses rolling update to update its nodes. If an application is deployed on multiple nodes, it may happens that those nodes will be updated at the same time. In such case there is a downtime risk. To avoid this issue a pod disruption budget can be configured to alert kubelet that some pod must be evicted if it breaks the pod disruption budget rule. This is a guaranty that a minimum number of pod will remain up no matter the situation is.</p>
+<h2 id="resources-utilization">Resources utilization<a class="headerlink" href="#resources-utilization" title="Permanent link">&para;</a></h2>
+<h3 id="configure-resource-request">Configure resource request<a class="headerlink" href="#configure-resource-request" title="Permanent link">&para;</a></h3>
+<p>This information is used by the scheduler to deploy pods on nodes. If a memory request is not configured then its value is 0 which indicates to the scheduler that the pods can be placed anywhere. This can lead to a resource overcommitment on a node, and potentially to kubelet crashes. The same applies to CPU requests.</p>
+<h3 id="configure-resource-limit">Configure resource limit<a class="headerlink" href="#configure-resource-limit" title="Permanent link">&para;</a></h3>
+<p>The resource limit can be configured or not depending on the needs. It will directly impact the SLA associated with the pods:</p>
+<ul>
+<li>Guaranteed:<ul>
+<li>Every Container in the Pod must have a memory limit and a memory request.</li>
+<li>For every Container in the Pod, the memory limit must equal the memory request.</li>
+<li>Every Container in the Pod must have a CPU limit and a CPU request.</li>
+<li>For every Container in the Pod, the CPU limit must equal the CPU request.</li>
+</ul>
+</li>
+<li>Burstable:<ul>
+<li>The Pod does not meet the criteria for QoS class Guaranteed.</li>
+<li>At least one Container in the Pod has a memory or CPU request.</li>
+</ul>
+</li>
+<li>BestEffort:<ul>
+<li>The Container has no memory or CPU limits or requests</li>
+</ul>
+</li>
+</ul>
+<p><strong>If a process goes over the memory limit, then it is terminated whereas if it goes over the CPU limit, it is throttled.</strong></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>For a lot of use cases, configuring the requested limits is enough</p>
+</div>
+<h2 id="tagging-resources">Tagging resources<a class="headerlink" href="#tagging-resources" title="Permanent link">&para;</a></h2>
+<p>As in any cloud, it is wise to tag resources. I may help the operation team in their day to day activity. The <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/">official documentation</a> proposes a list of tags.</p>
+<h2 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h2>
+<p>An application deployed to Kubernetes should send its logs to stdout and stdin so that it may be displayed with kubectl command or send to external system by applications such as Fluentd.</p>
+<h2 id="scaling">Scaling<a class="headerlink" href="#scaling" title="Permanent link">&para;</a></h2>
+<h3 id="stateless-application">Stateless application<a class="headerlink" href="#stateless-application" title="Permanent link">&para;</a></h3>
+<p>An application must not have stored state in their local file system, if there is a need for persistent data then a persistent volume must be used.</p>
+<h3 id="horizontal-pod-auto-scaler">Horizontal pod auto scaler<a class="headerlink" href="#horizontal-pod-auto-scaler" title="Permanent link">&para;</a></h3>
+<p>An horizontal pod auto scaler must be configured to allow an application to scale out and scale in depending on thresholds. In this way an application can allow respond to incoming request no matter the number of request it has, and always at the lowest cost.</p>
+<h2 id="configuration-and-secrets">Configuration and secrets<a class="headerlink" href="#configuration-and-secrets" title="Permanent link">&para;</a></h2>
+<h3 id="externalize-configuration">Externalize configuration<a class="headerlink" href="#externalize-configuration" title="Permanent link">&para;</a></h3>
+<p>As mentioned in the <a href="https://12factor.net/config" target="_blank">twelve factors</a> the configuration must be separated from the code. Doing this will allow a Kubernetes manifest to be reusable in multiple context or in multiple stacks. The technical way to achieve this goal is to use ConfigMaps to store the configuration and mount the ConfigMaps inside a container.</p>
+<h3 id="mount-secrets-as-volume">Mount secrets as volume<a class="headerlink" href="#mount-secrets-as-volume" title="Permanent link">&para;</a></h3>
+<p>Secrets are often transmitted to a pod via environment variables. This is the easiest way to copy secrets for the CI to the pods. However, it is not really a good practice as secrets in environment variables can be displayed in the container start command logs, which may be inspected by people who should not know it.</p>
+<details class="example">
+<summary>references</summary>
+<ul>
+<li><a href="https://learnk8s.io/production-best-practices#application-development" target="_blank">learnk8</a></li>
+<li><a href="https://kubernetes.io/docs" target="_blank">Kubernetes official documentation</a></li>
+</ul>
+</details>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 23, 2023</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/laurent-gil/?locale=en_US" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/angegar" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://medium.com/@laurent-gil" target="_blank" rel="noopener" title="medium.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M180.5 74.262C80.813 74.262 0 155.633 0 256s80.819 181.738 180.5 181.738S361 356.373 361 256 280.191 74.262 180.5 74.262Zm288.25 10.646c-49.845 0-90.245 76.619-90.245 171.095s40.406 171.1 90.251 171.1 90.251-76.619 90.251-171.1H559c0-94.503-40.4-171.095-90.248-171.095Zm139.506 17.821c-17.526 0-31.735 68.628-31.735 153.274s14.2 153.274 31.735 153.274S640 340.631 640 256c0-84.649-14.215-153.271-31.742-153.271Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/angegar" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>

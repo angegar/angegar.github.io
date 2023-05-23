@@ -1,0 +1,1180 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Laurent Gil web site used to host tutorials">
+      
+      
+      
+        <link rel="canonical" href="https://angegar.github.io/Kubernetes/kubernetes/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
+    
+    
+      
+        <title>Kubernetes and its friends - Laurent Gil</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/angegar.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kubernetes-and-its-friends" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Laurent Gil" class="md-header__button md-logo" aria-label="Laurent Gil" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laurent Gil
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Kubernetes and its friends
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/angegar/angegar.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    angegar.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Laurent Gil" class="md-nav__button md-logo" aria-label="Laurent Gil" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Laurent Gil
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/angegar/angegar.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    angegar.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          DevOps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          DevOps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops/doc-as-code" class="md-nav__link">
+        Documentation as code
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../platform-engineering/README.html" class="md-nav__link">
+        Platform Engineering
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-overview/README.html" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-basics" class="md-nav__link">
+        Basic usage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-wordpress" class="md-nav__link">
+        Hands-on
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bluegreen" class="md-nav__link">
+        Blue-green
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-helm/" class="md-nav__link">
+        Helm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./" class="md-nav__link">
+        Ecosystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cluster-administration/" class="md-nav__link">
+        Cluster administration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../best-practices/" class="md-nav__link">
+        Best practices
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          IaaC
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          IaaC
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cdk/README.html" class="md-nav__link">
+        Cloud Development Kit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          CI/CD
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          CI/CD
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dagger/README.html" class="md-nav__link">
+        Dagger
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Conferences
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Conferences
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Conferences/" class="md-nav__link">
+        All Days Devops 2020
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Conferences/alldaysdevops-2021/" class="md-nav__link">
+        All Days Devops 2021
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Conferences/alldaysdevops-2022/" class="md-nav__link">
+        All Days Devops 2022
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisite" class="md-nav__link">
+    Pre-requisite
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-kubernetes" class="md-nav__link">
+    Install kubernetes
+  </a>
+  
+    <nav class="md-nav" aria-label="Install kubernetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-with-kops-kubernetes-operations" class="md-nav__link">
+    Install with KOPS (Kubernetes OperationS)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resize-your-cluster-nodes" class="md-nav__link">
+    Resize your cluster nodes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-a-container-with-kubernetes" class="md-nav__link">
+    Deploy a container with kubernetes
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy a container with kubernetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-manifest-file" class="md-nav__link">
+    Create a manifest file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-the-manifest" class="md-nav__link">
+    Deploy the manifest
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-a-container-with-helm" class="md-nav__link">
+    Deploy a container with Helm
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy a container with Helm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helm-lint" class="md-nav__link">
+    Helm lint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-your-chart" class="md-nav__link">
+    Deploy your chart
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-a-container-with-spinnaker" class="md-nav__link">
+    Deploy a container with Spinnaker
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy a container with Spinnaker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-spinnaker" class="md-nav__link">
+    Install Spinnaker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-spinnaker-pipeline-template" class="md-nav__link">
+    Create a Spinnaker pipeline template
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a Spinnaker pipeline template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#template-sample" class="md-nav__link">
+    Template sample
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template-configuration" class="md-nav__link">
+    Template configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-your-pipeline-to-spinnaker" class="md-nav__link">
+    Deploy your pipeline to Spinnaker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="kubernetes-and-its-friends">Kubernetes and its friends<a class="headerlink" href="#kubernetes-and-its-friends" title="Permanent link">&para;</a></h1>
+<h2 id="pre-requisite">Pre-requisite<a class="headerlink" href="#pre-requisite" title="Permanent link">&para;</a></h2>
+<ul>
+<li>To manage the kubernetes stack you will need to install <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a> CLI.</li>
+</ul>
+<h2 id="install-kubernetes">Install kubernetes<a class="headerlink" href="#install-kubernetes" title="Permanent link">&para;</a></h2>
+<p>Per the Kubernetes documentation, there are plenty of ways to install a kubernetes cluster. However, the one I used is not listed in this website but was produced by kubernetes.</p>
+<h3 id="install-with-kops-kubernetes-operations">Install with <a href="https://kubernetes.io/docs/setup/custom-cloud/kops/">KOPS (Kubernetes OperationS)</a><a class="headerlink" href="#install-with-kops-kubernetes-operations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Configure AWS Region to use, the aws key and secret are in your ~/.kube folder</span>
+<span class="nv">REGION</span><span class="o">=</span>us-west-1
+
+<span class="c1"># Configure the cluster name and availability zones</span>
+<span class="nv">AVAILABILITY_ZONES</span><span class="o">=</span>us-west-1a,us-west-1c
+<span class="nv">CLUSTER_NAME</span><span class="o">=</span>kube.platformdxc-test.com
+
+<span class="c1"># Configure the bucket s3 used to store the cluster information</span>
+<span class="nv">BUCKET_NAME</span><span class="o">=</span>lgil3-kubernetes
+<span class="nb">export</span><span class="w"> </span><span class="nv">KOPS_STATE_STORE</span><span class="o">=</span>s3://<span class="nv">$BUCKET_NAME</span>
+
+<span class="c1"># Create the S3 bucket if it does not exist</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span>aws<span class="w"> </span>s3api<span class="w"> </span>list-buckets<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="nv">$BUCKET_NAME</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>aws<span class="w"> </span>s3api<span class="w"> </span>create-bucket<span class="w"> </span>--bucket<span class="w"> </span><span class="nv">$BUCKET_NAME</span><span class="w">  </span>--region<span class="w"> </span><span class="nv">$REGION</span>
+<span class="w">    </span>aws<span class="w"> </span>s3api<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>bucket-exists<span class="w"> </span>--bucket<span class="w"> </span><span class="nv">$BUCKET_NAME</span>
+<span class="w">    </span>aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-versioning<span class="w"> </span>--bucket<span class="w"> </span><span class="nv">$BUCKET_NAME</span><span class="w"> </span>--versioning-configuration<span class="w"> </span><span class="nv">Status</span><span class="o">=</span>Enabled
+<span class="k">fi</span>
+
+<span class="c1"># Create your kubernetes cluster</span>
+kops<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--zones<span class="w"> </span><span class="nv">$AVAILABILITY_ZONES</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cloud<span class="w"> </span>aws<span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>--node-count<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--node-size<span class="w"> </span>c5.4.xlarge<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--master-count<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--master-size<span class="w"> </span>t2.large<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--master-zones<span class="w"> </span><span class="nv">$AVAILABILITY_ZONES</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--alsologtostderr<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--yes
+</code></pre></div>
+<p><strong>Congratulation you have just deployed your first kubernetes cluster !!!!</strong></p>
+<p><img src="https://render.bitstrips.com/v2/cpanel/b8b01acf-113e-4801-b09f-6403c66e3c4a-bc9fa5d8-e141-4ea4-879d-bc3d4b22abbc-v1.png?transparent=1&palette=1" width="200" align="middle" /></p>
+<h2 id="resize-your-cluster-nodes">Resize your cluster nodes<a class="headerlink" href="#resize-your-cluster-nodes" title="Permanent link">&para;</a></h2>
+<p>You can list your <a href="https://github.com/kubernetes/kops/blob/master/docs/instance_groups.md">instance group</a> in using:</p>
+<p><div class="highlight"><pre><span></span><code>kops<span class="w"> </span>get<span class="w"> </span>ig
+</code></pre></div>
+The command output will be</p>
+<div class="highlight"><pre><span></span><code>//<span class="w"> </span>cspell:disable-next-line<span class="w"> </span>--<span class="w"> </span>disables<span class="w"> </span>checking<span class="w"> </span>till<span class="w"> </span>the<span class="w"> </span>end<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>next<span class="w"> </span>line.
+<span class="w">  </span>NAME<span class="w">                    </span>ROLE<span class="w">    </span>MACHINETYPE<span class="w">     </span>MIN<span class="w">     </span>MAX<span class="w">     </span>ZONES
+master-us-west-1a-1<span class="w">     </span>Master<span class="w">  </span>t2.large<span class="w">        </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w">       </span>us-west-1a
+master-us-west-1a-2<span class="w">     </span>Master<span class="w">  </span>t2.large<span class="w">        </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w">       </span>us-west-1a
+master-us-west-1c-1<span class="w">     </span>Master<span class="w">  </span>t2.large<span class="w">        </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w">       </span>us-west-1c
+nodes<span class="w">                   </span>Node<span class="w">    </span>t2.2xlarge<span class="w">      </span><span class="m">3</span><span class="w">       </span><span class="m">9</span><span class="w">       </span>us-west-1a,us-west-1c
+</code></pre></div>
+<p>Then you can edit your instance groups in using :</p>
+<p><div class="highlight"><pre><span></span><code>kops<span class="w"> </span>edit<span class="w"> </span>ig<span class="w"> </span>&lt;ig<span class="w"> </span>name&gt;<span class="w"> </span>--state<span class="w"> </span>s3://lgil3-kubernetes
+</code></pre></div>
+For the instance group nodes, the file content is</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kops/v1alpha2</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">InstanceGroup</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2018-06-07T13:45:18Z</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">kops.k8s.io/cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube.platformdxc-test.com</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nodes</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kope.io/k8s-1.9-debian-jessie-amd64-hvm-ebs-2018-03-11</span>
+<span class="w">      </span><span class="nt">machineType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t2.2xlarge</span>
+<span class="w">      </span><span class="nt">maxSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9</span>
+<span class="w">      </span><span class="nt">minSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">      </span><span class="nt">nodeLabels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">kops.k8s.io/instancegroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nodes</span>
+<span class="w">      </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Node</span>
+<span class="w">      </span><span class="nt">subnets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-west-1a</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-west-1c</span>
+</code></pre></div>
+<p>change the minSize to 4 and apply the change :</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>kops<span class="w"> </span>update<span class="w"> </span>cluster<span class="w"> </span>kube.platformdxc-test.com<span class="w"> </span>--yes<span class="w"> </span>--state<span class="w"> </span>s3://lgil3-kubernetes
+<span class="w">    </span>kops<span class="w"> </span>rolling-update<span class="w"> </span>cluster<span class="w">  </span>kube.platformdxc-test.com<span class="w"> </span>--state<span class="o">=</span>s3://lgil3-kubernetes<span class="w"> </span>--yes
+</code></pre></div>
+<p><strong>Amazing you have just scaled your cluster</strong></p>
+<p><img src="https://render.bitstrips.com/v2/cpanel/e068dd5c-9de0-4feb-9f57-f7289961c386-bc9fa5d8-e141-4ea4-879d-bc3d4b22abbc-v1.png?transparent=1&palette=1" width="200" align="middle"/></p>
+<h2 id="deploy-a-container-with-kubernetes">Deploy a container with kubernetes<a class="headerlink" href="#deploy-a-container-with-kubernetes" title="Permanent link">&para;</a></h2>
+<h3 id="create-a-manifest-file">Create a manifest file<a class="headerlink" href="#create-a-manifest-file" title="Permanent link">&para;</a></h3>
+<p>Create a manifest file with the following content:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jenkins-test</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jenkins-test</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1beta2</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jenkins</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jenkins</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jenkins-test</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jenkins</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jenkins</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jenkins</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;jenkins/jenkins&quot;</span>
+<span class="w">          </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span>
+<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">              </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">              </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jnlp</span>
+<span class="w">              </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50000</span>
+<span class="w">              </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/jenkins_home</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jenkins-home</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jenkins-home</span>
+<span class="w">        </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div>
+<h3 id="deploy-the-manifest">Deploy the manifest<a class="headerlink" href="#deploy-the-manifest" title="Permanent link">&para;</a></h3>
+<p>Download the <em><a href="manifest.yaml">manifest</a></em> file  and execute the following command. The manifest will create the <code>jenkins-test</code> namespace and will deploy a jenkins pod.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>manifest.yaml
+</code></pre></div>
+<p>You can check that your jenkins pod was created in  using :</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>jenkins-test
+</code></pre></div>
+<p>if you need more details about your pod you can execute :</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>kubectl<span class="w"> </span>describe<span class="w"> </span>pods<span class="w"> </span>&lt;pod<span class="w"> </span>name&gt;-n<span class="w"> </span>jenkins-test
+</code></pre></div>
+<h2 id="deploy-a-container-with-helm">Deploy a container with Helm<a class="headerlink" href="#deploy-a-container-with-helm" title="Permanent link">&para;</a></h2>
+<p>You can create a jenkins helm chart with :</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>helm<span class="w"> </span>create<span class="w"> </span>jenkins
+</code></pre></div>
+<p>The comment will create a new repository with the following structure :</p>
+<p><img alt="helm_dir_struct.PNG" src="helm_dir_struct.PNG" /></p>
+<ul>
+<li>The template folder contains a basic chart definition.</li>
+<li>The values file will contain the chart parameters</li>
+</ul>
+<p>Edit the <code>values.yaml</code> file :</p>
+<ul>
+<li>change the parameter <code>repository</code> to <em>jenkins/jenkins</em></li>
+<li>change the parameter <code>tag</code> to <em>2.130</em></li>
+</ul>
+<p>Edit the file <code>templates/deployment.yaml</code> :</p>
+<ul>
+<li>Change the line 28 <code>containerPort</code> to 8080</li>
+<li>Remove the following lines :</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="nt">livenessProbe</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">httpGet</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="nt">readinessProbe</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">httpGet</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+</code></pre></div>
+We need to do it as the default container is nginx and we are trying to deploy jenkins</p>
+<h3 id="helm-lint">Helm lint<a class="headerlink" href="#helm-lint" title="Permanent link">&para;</a></h3>
+<p>Helm comes with a linter to check your chart syntax, go into the jenkins helm folder and execute :</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>helm<span class="w"> </span>lint<span class="w"> </span>.
+</code></pre></div>
+<h3 id="deploy-your-chart">Deploy your chart<a class="headerlink" href="#deploy-your-chart" title="Permanent link">&para;</a></h3>
+<p>From your chart folder
+<div class="highlight"><pre><span></span><code><span class="w">    </span>helm<span class="w"> </span>install<span class="w"> </span>--name<span class="w"> </span>jenkins<span class="w"> </span>--namespace<span class="w"> </span>jenkins-test<span class="w"> </span>--values<span class="w"> </span>values.yaml<span class="w"> </span>.
+</code></pre></div></p>
+<p>Access your jenkins server in using the following commands :</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">POD_NAME</span><span class="o">=</span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>--namespace<span class="w"> </span>jenkins-test<span class="w"> </span>-l<span class="w"> </span><span class="s2">&quot;app=jenkins,release=jenkins&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.items[0].metadata.name}&quot;</span><span class="k">)</span>
+<span class="w">    </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span><span class="nv">$POD_NAME</span><span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-n<span class="w"> </span>jenkins-test
+</code></pre></div>
+<p>Navigate to <a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></p>
+<p><img src="https://render.bitstrips.com/v2/cpanel/08e72ba2-d244-4ff6-afe1-c1506b9e2f02-bc9fa5d8-e141-4ea4-879d-bc3d4b22abbc-v1.png?transparent=1&palette=1" width="200" align="middle"/></p>
+<h2 id="deploy-a-container-with-spinnaker">Deploy a container with Spinnaker<a class="headerlink" href="#deploy-a-container-with-spinnaker" title="Permanent link">&para;</a></h2>
+<h3 id="install-spinnaker">Install Spinnaker<a class="headerlink" href="#install-spinnaker" title="Permanent link">&para;</a></h3>
+<p>You can deploy Spinnaker in using <a href="https://www.spinnaker.io/setup/install/halyard/">Halyard</a>. <a href="https://www.spinnaker.io/setup/install/halyard/">Halyard</a> is a CLI used to generate a configuration file which will be applied against your cloud provider. In my use case i used the kubernetes cluster previously created. However you can target another cloud provider such as EC2,GCE ....</p>
+<h3 id="create-a-spinnaker-pipeline-template">Create a Spinnaker pipeline template<a class="headerlink" href="#create-a-spinnaker-pipeline-template" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>You can configure Spinnaker from the UI or from code.</p>
+</blockquote>
+<p>A Spinnaker pipeline is composed of a template and a configuration which is very powerful as you can reuse a template pipeline over different project.</p>
+<p><img alt="spinnaker template" src="https://github.com/spinnaker/dcd-spec/blob/master/MPTGraphic.png" /></p>
+<p>As the template pipeline is shared across several projects if you modify it once it will update all the associated pipelines.</p>
+<h4 id="template-sample">Template sample<a class="headerlink" href="#template-sample" title="Permanent link">&para;</a></h4>
+<p>elk-template.yml</p>
+<div class="highlight"><pre><span></span><code><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo-template</span>
+
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo app template</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kubernetes v2 deploy with a Github trigger template for a demo app</span>
+<span class="w">  </span><span class="nt">scopes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global</span>
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gitBranch</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Git branch to trigger on</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8App</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application this resource belongs to. Affects where the resource is accessible in the UI</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8Cluster</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cluster this resource belongs to. Logical grouping for the UI.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">repository</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The repository name</span>
+
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">concurrentExecutions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">limitConcurrent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">parallel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">expectedArtifacts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8ArtifactId</span>
+<span class="w">    </span><span class="nt">defaultArtifact</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom</span>
+<span class="w">    </span><span class="nt">matchArtifact</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github/file</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy/manifest.yaml</span>
+<span class="w">    </span><span class="nt">useDefaultArtifact</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">usePriorArtifact</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">usePriorExecution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">triggers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git</span>
+<span class="w">    </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">gitBranch</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github</span>
+<span class="w">    </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lgil3</span>
+<span class="w">    </span><span class="nt">slug</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">repository</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">expectedArtifactIds</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8ArtifactId</span>
+
+<span class="nt">stages</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deployK8Manifest</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deployManifest</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy K8s manifest</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cloudProvider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
+<span class="w">    </span><span class="nt">account</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sandbox-manifest</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">artifact</span>
+<span class="w">    </span><span class="nt">manifestArtifactId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8ArtifactId</span>
+<span class="w">    </span><span class="nt">manifestArtifactAccount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lgil3</span>
+<span class="w">    </span><span class="nt">relationships</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">loadBalancers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">      </span><span class="nt">securityGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">    </span><span class="nt">clusters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">    </span><span class="nt">moniker</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">k8App</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">      </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">k8Cluster</span><span class="nv"> </span><span class="s">}}&quot;</span>
+</code></pre></div>
+<h4 id="template-configuration">Template configuration<a class="headerlink" href="#template-configuration" title="Permanent link">&para;</a></h4>
+<p>elk-config.yaml</p>
+<div class="highlight"><pre><span></span><code><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="nt">pipeline</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">application</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">elasticsearch</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy ELK suite</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.dxc.com/raw/lgil3/kube-spinnaker-template/master/elk-template.yml?token=AAASjpLFBNTtMwyqjMS4RZYONXDmwD6uks5bPzPfwA%3D%3D</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chart-elk</span>
+<span class="w">    </span><span class="nt">gitBranch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span>
+<span class="w">    </span><span class="nt">k8App</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">elasticsearch</span>
+<span class="w">    </span><span class="nt">k8Cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">elasticsearch-cluster</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">inherit</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;expectedArtifacts&#39;</span><span class="p p-Indicator">,</span><span class="s">&#39;concurrentExecutions&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;triggers&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;parameters&#39;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>We can see in the pipeline/template/source the reference to the source template in github.</p>
+<p>This pipeline is configure to follow the master branch of the repository chart-elk, it will be triggered each time the file deploy/manifest.yml is modified.</p>
+<h4 id="deploy-your-pipeline-to-spinnaker">Deploy your pipeline to Spinnaker<a class="headerlink" href="#deploy-your-pipeline-to-spinnaker" title="Permanent link">&para;</a></h4>
+<p>You can now push your pipeline to Spinnaker in using the <a href="https://github.com/spinnaker/roer">roer</a> cli.</p>
+<ol>
+<li>
+<p>Create the spinnaker application
+    <div class="highlight"><pre><span></span><code>roer<span class="w"> </span>--as<span class="w"> </span><span class="k">$(</span>token<span class="k">)</span><span class="w"> </span>app<span class="w"> </span>create<span class="w"> </span>elasticsearch<span class="w"> </span>createApp.yml
+</code></pre></div></p>
+</li>
+<li>
+<p>Create your deployment pipeline
+    <div class="highlight"><pre><span></span><code>roer<span class="w"> </span>--as<span class="w"> </span><span class="k">$(</span>token<span class="k">)</span><span class="w"> </span>pipeline<span class="w"> </span>save<span class="w"> </span>elk-config.yaml
+</code></pre></div></p>
+</li>
+</ol>
+<!-- ## Deploy a container with Jenkins-X
+-->
+
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/">https://kubernetes.io/docs/reference/kubectl/cheatsheet/</a></li>
+<li><a href="https://github.com/spinnaker/dcd-spec/blob/master/PIPELINE_TEMPLATES.md">https://github.com/spinnaker/dcd-spec/blob/master/PIPELINE_TEMPLATES.md</a></li>
+<li><a href="https://github.com/spinnaker/roer">https://github.com/spinnaker/roer</a></li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 23, 2023</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/laurent-gil/?locale=en_US" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/angegar" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://medium.com/@laurent-gil" target="_blank" rel="noopener" title="medium.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M180.5 74.262C80.813 74.262 0 155.633 0 256s80.819 181.738 180.5 181.738S361 356.373 361 256 280.191 74.262 180.5 74.262Zm288.25 10.646c-49.845 0-90.245 76.619-90.245 171.095s40.406 171.1 90.251 171.1 90.251-76.619 90.251-171.1H559c0-94.503-40.4-171.095-90.248-171.095Zm139.506 17.821c-17.526 0-31.735 68.628-31.735 153.274s14.2 153.274 31.735 153.274S640 340.631 640 256c0-84.649-14.215-153.271-31.742-153.271Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/angegar" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>
