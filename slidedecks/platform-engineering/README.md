@@ -166,7 +166,7 @@ Je voulais remettre ici cette citation de Dr Werner Vogels, CTO d'AWS. "You Buil
 
 ---
 
-# 2 pizzas pour une équipe
+# 2 pizzas pour une équipe 1/3
 
 <div class='center'>
 <img src=assets/pizza1.excalidraw.png width=50% />
@@ -174,7 +174,7 @@ Je voulais remettre ici cette citation de Dr Werner Vogels, CTO d'AWS. "You Buil
 
 ---
 
-# 2 pizzas pour une équipe
+# 2 pizzas pour une équipe 2/2
 
 <div class='center'>
 <img src=assets/pizza2.excalidraw.png width=70% />
@@ -182,7 +182,7 @@ Je voulais remettre ici cette citation de Dr Werner Vogels, CTO d'AWS. "You Buil
 
 ---
 
-# 2 pizzas pour une équipe
+# 2 pizzas pour une équipe 3/3
 
 <div class='center'>
 <img src=assets/pizza3.excalidraw.png width=50% />
