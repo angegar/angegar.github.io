@@ -402,7 +402,7 @@ Présentation de l'écosystème qui fait de k8s un outil de choix pour réaliser
 
 Instrumenter la stack Kubernetes pour forcer la conformité :
 
-- [OPA Gatekeeper](https://github.com/open-policy-agent/gatekeeper) ([policy library](https://open-policy-agent.github.io/gatekeeper-library/website/allowedrepos))
+- [OPA Gatekeeper](https://github.com/open-policy-agent/gatekeeper) ([policy library](https://open-policy-agent.github.io/gatekeeper-library/website/))
 
 - [Kyverno](https://github.com/kyverno/kyverno) ([policy library](https://kyverno.io/policies/?policytypes=Deployment))
 
