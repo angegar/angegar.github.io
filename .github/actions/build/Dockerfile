@@ -1,6 +1,6 @@
 # Dockerfile used by CI pipeline to publish doc site automatically
 # https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/dockerfile-support-for-github-actions
-FROM python:3.7-slim-stretch
+FROM python:3.11.3-slim-buster
 ENV MARP_VERSION=2.2.0
 # ENV MARP_INPUT_PATH
 # ENV MARP_OUTPUT_PATH
